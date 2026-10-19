@@ -1,0 +1,8 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Monograma ICosta">
+  <rect width="192" height="192" rx="96" fill="#0D382D"/>
+  <circle cx="96" cy="96" r="80" stroke="#B9914B" stroke-width="1.5" opacity=".72"/>
+  <path d="M52 63V129" stroke="#D5B66C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M73 63C83 51 98 46 113 46C132 46 147 55 157 68" stroke="#D5B66C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M73 129C83 141 98 146 113 146C132 146 147 137 157 124" stroke="#D5B66C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M70 82H123M96 79V112M83 87L74 106H92L83 87ZM109 87L100 106H118L109 87ZM78 116H114" stroke="#D5B66C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

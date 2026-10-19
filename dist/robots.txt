@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://icosta-advocacia.saltytern4.chatgpt.site/sitemap.xml

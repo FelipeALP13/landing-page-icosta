@@ -1,0 +1,21 @@
+<svg width="640" height="176" viewBox="0 0 640 176" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">ICosta Advocacia</title>
+  <desc id="desc">Monograma IC em dourado acompanhado do nome ICosta Advocacia</desc>
+  <g transform="translate(4 4)">
+    <rect x="0" y="0" width="168" height="168" rx="84" fill="#0D382D"/>
+    <circle cx="84" cy="84" r="70.5" stroke="#B9914B" stroke-width="1" opacity=".65"/>
+    <path d="M45 55V113" stroke="#D5B66C" stroke-width="7" stroke-linecap="round"/>
+    <path d="M64 55C73 45 86 40 99 40C116 40 129 48 138 60" stroke="#D5B66C" stroke-width="7" stroke-linecap="round"/>
+    <path d="M64 113C73 123 86 128 99 128C116 128 129 120 138 108" stroke="#D5B66C" stroke-width="7" stroke-linecap="round"/>
+    <path d="M61 73H108" stroke="#D5B66C" stroke-width="2" stroke-linecap="round"/>
+    <path d="M84.5 70V99" stroke="#D5B66C" stroke-width="2"/>
+    <path d="M73 77L65 94H81L73 77Z" stroke="#D5B66C" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M96 77L88 94H104L96 77Z" stroke="#D5B66C" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M69 101H100" stroke="#D5B66C" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(204 42)">
+    <text x="0" y="50" fill="#F5F1E8" font-family="Georgia, 'Times New Roman', serif" font-size="56" letter-spacing="-2">I<tspan fill="#D5B66C">Costa</tspan></text>
+    <path d="M1 66H358" stroke="#B9914B" stroke-width="1" opacity=".55"/>
+    <text x="2" y="94" fill="#D8D4CA" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="6">ADVOCACIA</text>
+  </g>
+</svg>
