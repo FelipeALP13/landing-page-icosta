@@ -133,57 +133,187 @@
   }));
   renderAtlas();
 
-  const resourceCards = Array.from(document.querySelectorAll('[data-resource-card]'));
-  const resourceSearch = document.querySelector('[data-resource-search]');
-  const resourceFilters = Array.from(document.querySelectorAll('[data-resource-filter]'));
-  const resourceCount = document.querySelector('[data-resource-count]');
-  const resourceEmpty = document.querySelector('[data-resource-empty]');
-  let activeResourceFilter = 'todos';
-  let favoriteResources = new Set();
-  try { favoriteResources = new Set(JSON.parse(localStorage.getItem('icosta-resource-favorites') || '[]')); } catch { favoriteResources = new Set(); }
+  const lensData = {
+    locacao: {
+      label: 'Contrato de locação',
+      code: 'IMÓVEL / 001',
+      title: 'Contrato de locação residencial',
+      parties: 'LOCADOR e LOCATÁRIO, devidamente identificados, ajustam as condições descritas neste instrumento.',
+      clauses: [
+        { heading: 'Objeto e identificação do imóvel', preview: 'O contrato deve permitir compreender exatamente qual bem está sendo locado.', kicker: 'Ponto 01 • Identificação', title: 'Você sabe exatamente o que está sendo contratado?', text: 'Endereço, unidade, vagas, áreas vinculadas e condições de uso precisam permitir a identificação precisa do imóvel.', question: 'O documento e a vistoria descrevem o mesmo imóvel e seus acessórios?', keep: 'Contrato, laudo de vistoria, fotos datadas e comprovantes relacionados ao imóvel.' },
+        { heading: 'Prazo e renovação', preview: 'A duração influencia saída, continuidade e planejamento das partes.', kicker: 'Ponto 02 • Duração', title: 'O que acontece quando o prazo termina?', text: 'Prazo inicial, renovação, aviso e permanência após o término podem produzir efeitos diferentes para as partes.', question: 'O contrato explica com clareza a duração, a renovação e a forma de aviso?', keep: 'Versão assinada, comunicações sobre renovação e comprovantes de entrega de avisos.' },
+        { heading: 'Valor, reajuste e encargos', preview: 'Aluguel, índice e despesas precisam estar claramente separados.', kicker: 'Ponto 03 • Valores', title: 'O custo total está visível ou espalhado pelo documento?', text: 'Além do aluguel, podem existir reajuste, condomínio, tributos, seguros e outras despesas que precisam ser compreendidas em conjunto.', question: 'Quais valores podem mudar, quando e segundo qual critério?', keep: 'Boletos, demonstrativos, recibos e comunicações sobre reajuste ou despesas.' },
+        { heading: 'Garantias', preview: 'Caução, fiança ou seguro possuem efeitos e responsabilidades diferentes.', kicker: 'Ponto 04 • Garantia', title: 'A garantia escolhida combina com o risco assumido?', text: 'Cada modalidade possui regras próprias, custos e consequências para locatário, locador e eventuais terceiros.', question: 'Como a garantia é constituída, atualizada e devolvida ao final?', keep: 'Comprovantes da garantia, apólice, depósito ou documentos do fiador.' },
+        { heading: 'Saída, multa e vistoria', preview: 'O encerramento deve dialogar com prazo, conservação e entrega das chaves.', kicker: 'Ponto 05 • Encerramento', title: 'Como o contrato termina na prática?', text: 'Aviso, multa, vistoria, reparos e entrega das chaves devem formar um procedimento compreensível e documentado.', question: 'A multa, a vistoria e a devolução do imóvel estão descritas de forma compatível entre si?', keep: 'Vistorias de entrada e saída, fotos, avisos e recibo de entrega das chaves.' }
+      ]
+    },
+    trabalho: {
+      label: 'Contrato de trabalho',
+      code: 'TRABALHO / 001',
+      title: 'Instrumento de contratação profissional',
+      parties: 'CONTRATANTE e PROFISSIONAL estabelecem as condições da atividade descrita neste instrumento ilustrativo.',
+      clauses: [
+        { heading: 'Função e forma de contratação', preview: 'O nome do contrato precisa conversar com a rotina real.', kicker: 'Ponto 01 • Relação', title: 'O documento descreve a relação que acontecerá na prática?', text: 'Função, autonomia, subordinação, local e forma de prestação ajudam a compreender a natureza da relação profissional.', question: 'As atividades e a forma de trabalho estão descritas como realmente serão executadas?', keep: 'Proposta, contrato, descrição da função e comunicações sobre a contratação.' },
+        { heading: 'Jornada e disponibilidade', preview: 'Horários, escalas e disponibilidade merecem linguagem objetiva.', kicker: 'Ponto 02 • Tempo', title: 'Quando começa e quando termina a disponibilidade?', text: 'Horário, intervalo, escala, trabalho remoto e chamadas fora da jornada podem alterar a compreensão do compromisso.', question: 'O documento diferencia jornada, intervalo, disponibilidade e eventual trabalho extraordinário?', keep: 'Escalas, controles de horário, mensagens e registros de acesso.' },
+        { heading: 'Remuneração e benefícios', preview: 'Valores e critérios variáveis devem poder ser conferidos.', kicker: 'Ponto 03 • Remuneração', title: 'É possível verificar como cada pagamento será calculado?', text: 'Parcela fixa, variável, benefícios, datas e condições precisam ser lidos em conjunto, sem depender apenas de promessas externas.', question: 'Quais parcelas são fixas, variáveis ou condicionadas e quando são pagas?', keep: 'Proposta, holerites, políticas de remuneração e comprovantes.' },
+        { heading: 'Deveres e confidencialidade', preview: 'Responsabilidades amplas precisam ter limites compreensíveis.', kicker: 'Ponto 04 • Responsabilidades', title: 'Os deveres estão definidos ou abertos demais?', text: 'Sigilo, uso de equipamentos, propriedade intelectual e condutas esperadas devem ter alcance e duração identificáveis.', question: 'Quais obrigações continuam depois do fim da relação e por quanto tempo?', keep: 'Políticas internas, termos anexos e comprovantes de entrega de equipamentos.' },
+        { heading: 'Término e consequências', preview: 'Aviso, verbas e devoluções precisam formar um procedimento claro.', kicker: 'Ponto 05 • Encerramento', title: 'O documento explica as consequências de cada forma de término?', text: 'O encerramento pode envolver aviso, valores, documentos, devolução de bens e obrigações posteriores.', question: 'Quais providências cada parte deverá cumprir quando a relação terminar?', keep: 'Avisos, termos de encerramento, comprovantes e documentos entregues.' }
+      ]
+    },
+    servicos: {
+      label: 'Prestação de serviços',
+      code: 'CIVIL / 001',
+      title: 'Contrato de prestação de serviços',
+      parties: 'CONTRATANTE e PRESTADOR ajustam o escopo, as responsabilidades e as condições deste exemplo educativo.',
+      clauses: [
+        { heading: 'Objeto e entregas', preview: 'O serviço precisa ser reconhecível quando estiver concluído.', kicker: 'Ponto 01 • Escopo', title: 'As partes saberão reconhecer uma entrega completa?', text: 'Escopo, quantidade, formato, limites e critérios de aceite reduzem interpretações diferentes sobre o que foi contratado.', question: 'O contrato distingue o que está incluído, o que não está e como a entrega será aprovada?', keep: 'Proposta, briefing, cronograma e registros de aprovação.' },
+        { heading: 'Prazos e dependências', preview: 'Uma entrega pode depender de informações fornecidas por ambas as partes.', kicker: 'Ponto 02 • Cronograma', title: 'Os prazos consideram as dependências do projeto?', text: 'Datas, etapas, revisões e responsabilidades por atrasos precisam considerar o que cada parte deve fornecer.', question: 'O que suspende ou altera um prazo e como essa mudança será registrada?', keep: 'Cronograma, pedidos de alteração e comunicações sobre dependências.' },
+        { heading: 'Preço, despesas e reajustes', preview: 'Pagamento deve acompanhar escopo e marcos verificáveis.', kicker: 'Ponto 03 • Pagamento', title: 'O valor está ligado a etapas que podem ser comprovadas?', text: 'Preço, vencimento, reembolso, impostos e serviços adicionais devem permitir conferência durante a execução.', question: 'Como mudanças de escopo afetam valor, prazo e forma de pagamento?', keep: 'Proposta comercial, notas, recibos e aprovações de serviço adicional.' },
+        { heading: 'Sigilo e propriedade intelectual', preview: 'Uso de informações e resultados precisa ter limites definidos.', kicker: 'Ponto 04 • Conteúdo', title: 'Quem poderá usar o quê depois da entrega?', text: 'Informações confidenciais, materiais preexistentes e resultados produzidos podem ter titulares e permissões diferentes.', question: 'O contrato diferencia propriedade, licença de uso e obrigação de confidencialidade?', keep: 'Arquivos originais, autorizações, registros de criação e termos de sigilo.' },
+        { heading: 'Rescisão e solução de conflitos', preview: 'A saída deve prever o destino do trabalho já realizado.', kicker: 'Ponto 05 • Saída', title: 'O que acontece com entregas, valores e acessos se o contrato terminar?', text: 'Encerramento, aviso, pagamento proporcional, devolução de materiais e resolução de divergências precisam conversar.', question: 'A rescisão explica o que permanece devido e como os materiais serão entregues ou devolvidos?', keep: 'Avisos, entregas parciais, acessos concedidos e comprovantes de pagamento.' }
+      ]
+    }
+  };
 
-  const normalizeSearch = (value) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-  const syncFavoriteButtons = () => {
-    resourceCards.forEach((card) => {
-      const favorite = favoriteResources.has(card.dataset.resourceId);
-      const button = card.querySelector('[data-favorite]');
-      if (!button) return;
-      button.setAttribute('aria-pressed', String(favorite));
-      button.textContent = favorite ? '★' : '☆';
-    });
+  const lensTabs = Array.from(document.querySelectorAll('[data-lens-document]'));
+  const lensClauseContainer = document.querySelector('[data-lens-clauses]');
+  const lensInsight = document.querySelector('.lens-insight');
+  const lensDialog = document.querySelector('[data-lens-dialog]');
+  const lensSummaryList = document.querySelector('[data-lens-summary-list]');
+  const lensCopyStatus = document.querySelector('[data-lens-copy-status]');
+  let activeLensDocument = 'locacao';
+  let activeLensClause = 0;
+  let lensTrigger = null;
+
+  const setLensText = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.textContent = value;
   };
-  const filterResources = () => {
-    const query = normalizeSearch(resourceSearch?.value || '');
-    let visible = 0;
-    resourceCards.forEach((card) => {
-      const matchesText = normalizeSearch(card.dataset.search || '').includes(query);
-      const matchesCategory = activeResourceFilter === 'todos' || card.dataset.category === activeResourceFilter || (activeResourceFilter === 'favoritos' && favoriteResources.has(card.dataset.resourceId));
-      card.hidden = !(matchesText && matchesCategory);
-      if (!card.hidden) visible += 1;
+
+  const renderLensClause = () => {
+    const documentData = lensData[activeLensDocument];
+    const clause = documentData.clauses[activeLensClause];
+    setLensText('[data-lens-insight-kicker]', clause.kicker);
+    setLensText('[data-lens-insight-title]', clause.title);
+    setLensText('[data-lens-insight-text]', clause.text);
+    setLensText('[data-lens-question]', clause.question);
+    setLensText('[data-lens-keep]', clause.keep);
+    setLensText('[data-lens-progress]', `${activeLensClause + 1} / ${documentData.clauses.length}`);
+    document.querySelectorAll('[data-lens-clause]').forEach((button) => {
+      const active = Number(button.dataset.lensClause) === activeLensClause;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
     });
-    if (resourceCount) resourceCount.textContent = String(visible);
-    if (resourceEmpty) resourceEmpty.hidden = visible !== 0;
+    const prev = document.querySelector('[data-lens-prev]');
+    const next = document.querySelector('[data-lens-next]');
+    if (prev) prev.disabled = activeLensClause === 0;
+    if (next) next.disabled = activeLensClause === documentData.clauses.length - 1;
+    const progress = document.querySelector('[data-lens-nav-progress]');
+    if (progress) progress.style.width = `${((activeLensClause + 1) / documentData.clauses.length) * 100}%`;
+    if (!body.classList.contains('reduce-motion') && !prefersReducedMotion) {
+      lensInsight?.animate([{ opacity: .35, transform: 'translateX(8px)' }, { opacity: 1, transform: 'none' }], { duration: 260, easing: 'ease-out' });
+    }
   };
-  resourceSearch?.addEventListener('input', filterResources);
-  resourceFilters.forEach((button) => button.addEventListener('click', () => {
-    activeResourceFilter = button.dataset.resourceFilter;
-    resourceFilters.forEach((item) => {
-      const active = item === button;
-      item.classList.toggle('active', active);
-      item.setAttribute('aria-pressed', String(active));
-    });
-    filterResources();
+
+  const renderLensDocument = () => {
+    const documentData = lensData[activeLensDocument];
+    setLensText('[data-lens-doc-code]', documentData.code);
+    setLensText('[data-lens-doc-title]', documentData.title);
+    setLensText('[data-lens-parties]', documentData.parties);
+    lensClauseContainer?.replaceChildren(...documentData.clauses.map((clause, index) => {
+      const button = document.createElement('button');
+      const number = document.createElement('b');
+      const copy = document.createElement('span');
+      const title = document.createElement('strong');
+      const preview = document.createElement('i');
+      button.type = 'button';
+      button.className = 'lens-clause';
+      button.dataset.lensClause = String(index);
+      button.setAttribute('aria-pressed', 'false');
+      number.textContent = String(index + 1).padStart(2, '0');
+      title.textContent = clause.heading;
+      preview.textContent = clause.preview;
+      copy.append(title, preview);
+      button.append(number, copy);
+      button.addEventListener('click', () => {
+        activeLensClause = index;
+        renderLensClause();
+      });
+      return button;
+    }));
+    lensTabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.lensDocument === activeLensDocument)));
+    renderLensClause();
+  };
+
+  lensTabs.forEach((tab) => tab.addEventListener('click', () => {
+    activeLensDocument = tab.dataset.lensDocument;
+    activeLensClause = 0;
+    renderLensDocument();
   }));
-  document.querySelectorAll('[data-favorite]').forEach((button) => button.addEventListener('click', () => {
-    const id = button.closest('[data-resource-card]')?.dataset.resourceId;
-    if (!id) return;
-    if (favoriteResources.has(id)) favoriteResources.delete(id); else favoriteResources.add(id);
-    try { localStorage.setItem('icosta-resource-favorites', JSON.stringify([...favoriteResources])); } catch { /* Favorite remains active for this visit. */ }
-    syncFavoriteButtons();
-    filterResources();
-  }));
-  syncFavoriteButtons();
-  filterResources();
+  document.querySelector('[data-lens-prev]')?.addEventListener('click', () => {
+    activeLensClause = Math.max(0, activeLensClause - 1);
+    renderLensClause();
+  });
+  document.querySelector('[data-lens-next]')?.addEventListener('click', () => {
+    activeLensClause = Math.min(lensData[activeLensDocument].clauses.length - 1, activeLensClause + 1);
+    renderLensClause();
+  });
+  renderLensDocument();
+
+  const lensSummaryText = () => {
+    const documentData = lensData[activeLensDocument];
+    return [
+      `ROTEIRO DE LEITURA — ${documentData.label.toUpperCase()}`,
+      ...documentData.clauses.map((clause, index) => `${index + 1}. ${clause.question}`),
+      '',
+      'Material educativo da ICosta Advocacia. Não constitui análise, parecer ou orientação jurídica para um caso concreto.'
+    ].join('\n');
+  };
+
+  document.querySelector('[data-lens-summary]')?.addEventListener('click', (event) => {
+    lensTrigger = event.currentTarget;
+    const documentData = lensData[activeLensDocument];
+    setLensText('[data-lens-dialog-title]', `Roteiro — ${documentData.label}`);
+    lensSummaryList?.replaceChildren(...documentData.clauses.map((clause) => {
+      const item = document.createElement('li');
+      item.textContent = clause.question;
+      return item;
+    }));
+    if (lensCopyStatus) lensCopyStatus.textContent = '';
+    lensDialog?.showModal();
+    body.classList.add('panel-open');
+    lensDialog?.querySelector('[data-lens-dialog-close]')?.focus();
+  });
+
+  const closeLensDialog = () => {
+    if (!lensDialog?.open) return;
+    lensDialog.close();
+    body.classList.remove('panel-open');
+    lensTrigger?.focus();
+  };
+  document.querySelector('[data-lens-dialog-close]')?.addEventListener('click', closeLensDialog);
+  lensDialog?.addEventListener('click', (event) => {
+    if (event.target === lensDialog) closeLensDialog();
+  });
+  lensDialog?.addEventListener('close', () => body.classList.remove('panel-open'));
+
+  document.querySelector('[data-lens-copy]')?.addEventListener('click', async () => {
+    const value = lensSummaryText();
+    try {
+      await navigator.clipboard.writeText(value);
+      if (lensCopyStatus) lensCopyStatus.textContent = 'Roteiro copiado.';
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = value;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.append(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+      if (lensCopyStatus) lensCopyStatus.textContent = 'Roteiro copiado.';
+    }
+  });
 
   const safeStorage = {
     read() {
