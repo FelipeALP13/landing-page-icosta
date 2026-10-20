@@ -13,6 +13,7 @@ const report = {
   sectionCount: (html.match(/<section/g) || []).length,
   metaDescription: /name="description"/.test(html),
   structuredData: /application\/ld\+json/.test(html),
+  heroAreaCount: (html.match(/data-hero-area/g) || []).length,
   atlasAreaCount: (html.match(/data-atlas-area=/g) || []).length,
   lensAreaCount: (html.match(/data-lens-document=/g) || []).length,
   professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.png/.test(html),
@@ -27,6 +28,7 @@ if (
   report.h1Count !== 1 ||
   !report.metaDescription ||
   !report.structuredData ||
+  report.heroAreaCount !== 6 ||
   report.atlasAreaCount !== 6 ||
   report.lensAreaCount !== 6 ||
   !report.professionalPhoto ||

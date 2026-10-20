@@ -36,4 +36,4 @@ node --check dist/script.js
 - `scripts/check-site.mjs`: verificações de conteúdo e integridade
 - `.openai/hosting.json`: configuração de hospedagem do projeto
 
-Desenvolvido por **FelipeALP13**.
+Desenvolvido por **Felipe Lucena**.

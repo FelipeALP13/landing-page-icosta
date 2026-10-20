@@ -75,8 +75,8 @@ button { color: inherit; font: inherit; }
 .badge-ring span { position: absolute; left: 43px; }
 .badge-ring b { position: absolute; left: 78px; font-weight: 300; }
 .hero-badge p { margin: 0; color: rgba(255,255,255,.7); text-align: center; text-transform: uppercase; letter-spacing: .14em; font-size: .58rem; line-height: 1.7; }
-.hero-bottom { position: absolute; inset: auto 0 34px; display: flex; align-items: center; gap: 18px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }
-.hero-bottom p { margin: 0; color: rgba(255,255,255,.62); font-size: .65rem; text-transform: uppercase; letter-spacing: .12em; }
+.hero-bottom { position: absolute; inset: auto 0 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 13px 15px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.16); }
+.hero-bottom p { margin: 0; color: rgba(255,255,255,.62); font-size: .58rem; text-transform: uppercase; letter-spacing: .1em; }
 .hero-bottom i { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
 .scroll-cue { margin-left: auto; color: rgba(255,255,255,.42); font-size: .61rem; text-transform: uppercase; letter-spacing: .12em; }
 .scroll-cue b { color: var(--gold); margin-left: 10px; }
@@ -442,7 +442,7 @@ body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after 
   .hero-actions { align-items: stretch; flex-direction: column; gap: 18px; }
   .button { width: 100%; max-width: 100%; }
   .button-quiet { align-self: flex-start; }
-  .hero-bottom { bottom: 28px; flex-wrap: wrap; gap: 9px 14px; }
+  .hero-bottom { bottom: 28px; gap: 8px 11px; }
   .hero-bottom p { font-size: .55rem; }
   .scroll-cue { width: 100%; margin: 9px 0 0; }
   .ticker-track span { font-size: 1rem; }
