@@ -68,6 +68,24 @@
         { kicker: 'Movimento 04 — Condução', title: 'Decisões melhores nascem de expectativas bem alinhadas.', description: 'Um acompanhamento claro registra avanços, mudanças de cenário e as decisões tomadas ao longo do caminho.', attention: ['Critérios para reavaliar a estratégia', 'Comunicação entre cliente e equipe'], materials: ['Registro das orientações', 'Cronologia atualizada'] }
       ]
     },
+    empresarial: {
+      label: 'Direito Empresarial',
+      stages: [
+        { kicker: 'Movimento 01 — Contexto', title: 'A decisão empresarial precisa ser lida dentro da operação real.', description: 'Estrutura societária, relações comerciais, fluxo de decisões e objetivos do negócio ajudam a delimitar a questão.', attention: ['Quem decide e com quais poderes', 'Qual impacto se busca evitar ou alcançar'], materials: ['Contrato social e alterações', 'Contratos, propostas e comunicações'] },
+        { kicker: 'Movimento 02 — Evidências', title: 'Governança e documentação precisam contar a mesma história.', description: 'Atas, registros, contratos e demonstrativos ajudam a verificar responsabilidades e compromissos assumidos.', attention: ['Validade e sequência das deliberações', 'Obrigações, garantias e vencimentos'], materials: ['Atas e documentos societários', 'Instrumentos comerciais e comprovantes'] },
+        { kicker: 'Movimento 03 — Caminhos', title: 'Prevenir, reorganizar, negociar ou litigar produz efeitos distintos.', description: 'A escolha considera continuidade da empresa, relações entre sócios, exposição financeira e urgência.', attention: ['Continuidade da atividade empresarial', 'Riscos para sócios, empresa e terceiros'], materials: ['Cenários financeiros relevantes', 'Propostas e tentativas de composição'] },
+        { kicker: 'Movimento 04 — Condução', title: 'A estratégia jurídica deve acompanhar o ritmo das decisões do negócio.', description: 'Responsáveis, prazos e documentos de cada etapa precisam permanecer visíveis até a formalização final.', attention: ['Aprovações e responsáveis internos', 'Marcos para revisão da estratégia'], materials: ['Plano de ação e calendário', 'Registros das decisões tomadas'] }
+      ]
+    },
+    condominial: {
+      label: 'Direito Condominial',
+      stages: [
+        { kicker: 'Movimento 01 — Contexto', title: 'A convivência coletiva depende das regras e dos fatos concretos.', description: 'Convenção, regimento, deliberações e histórico da situação ajudam a compreender direitos e deveres no condomínio.', attention: ['Quem é afetado e de que maneira', 'Qual regra interna se relaciona ao fato'], materials: ['Convenção e regimento interno', 'Atas e comunicações relevantes'] },
+        { kicker: 'Movimento 02 — Evidências', title: 'Registros claros dão segurança às decisões da comunidade.', description: 'Convocações, atas, notificações e demonstrativos permitem conferir procedimentos, quóruns e obrigações.', attention: ['Regularidade da convocação e votação', 'Histórico de avisos e providências'], materials: ['Editais, listas de presença e atas', 'Boletos, notificações e registros'] },
+        { kicker: 'Movimento 03 — Caminhos', title: 'Orientação, mediação, assembleia e processo têm funções diferentes.', description: 'A rota depende da urgência, do impacto coletivo, das regras aplicáveis e da possibilidade de solução consensual.', attention: ['Efeito da medida sobre a coletividade', 'Possibilidade de correção administrativa'], materials: ['Propostas de encaminhamento', 'Registros de tentativas de solução'] },
+        { kicker: 'Movimento 04 — Condução', title: 'A solução precisa ser comunicada e aplicada de forma consistente.', description: 'Depois da decisão, responsáveis, prazos e registros ajudam a preservar transparência e segurança para todos.', attention: ['Como a decisão será formalizada', 'Quem acompanhará seu cumprimento'], materials: ['Comunicado ou ata final', 'Comprovantes das providências adotadas'] }
+      ]
+    },
     imobiliario: {
       label: 'Direito Imobiliário',
       stages: [
@@ -76,13 +94,22 @@
         { kicker: 'Movimento 03 — Caminhos', title: 'Regularizar, negociar, contratar ou litigar exige leituras distintas.', description: 'A rota adequada depende da documentação, do objetivo sobre o imóvel e das pessoas envolvidas.', attention: ['Segurança do negócio pretendido', 'Urgência e possibilidade de acordo'], materials: ['Minutas ou propostas existentes', 'Notificações e tentativas de solução'] },
         { kicker: 'Movimento 04 — Condução', title: 'Patrimônio pede acompanhamento cuidadoso até a última formalidade.', description: 'O encerramento pode depender de registros, certidões, obrigações financeiras e providências posteriores.', attention: ['Ato que efetivamente conclui a operação', 'Pendências após acordo ou decisão'], materials: ['Comprovantes de cumprimento', 'Registros e certidões atualizados'] }
       ]
+    },
+    familia: {
+      label: 'Direito de Família',
+      stages: [
+        { kicker: 'Movimento 01 — Contexto', title: 'Vínculos, necessidades e patrimônio fazem parte da mesma história.', description: 'Compreender a composição familiar, os acontecimentos e os objetivos de cada pessoa permite uma leitura mais cuidadosa.', attention: ['Quem precisa ser considerado na decisão', 'Quais mudanças motivaram a conversa'], materials: ['Certidões e documentos pessoais', 'Linha do tempo familiar e patrimonial'] },
+        { kicker: 'Movimento 02 — Evidências', title: 'Organização documental reduz incertezas em momentos delicados.', description: 'Registros pessoais, patrimoniais e financeiros ajudam a esclarecer responsabilidades e possibilidades.', attention: ['Situação de filhos e dependentes', 'Composição e origem do patrimônio'], materials: ['Comprovantes de renda e despesas', 'Documentos de bens e obrigações'] },
+        { kicker: 'Movimento 03 — Caminhos', title: 'Consenso e processo devem ser comparados com cuidado humano.', description: 'A rota considera proteção, urgência, viabilidade do diálogo e efeitos práticos para todas as pessoas envolvidas.', attention: ['Possibilidade de construção conjunta', 'Necessidade de proteção ou medida urgente'], materials: ['Propostas já conversadas', 'Registros relevantes para a decisão'] },
+        { kicker: 'Movimento 04 — Condução', title: 'Acordos e decisões precisam funcionar também na vida cotidiana.', description: 'Acompanhamento claro ajuda a transformar definições jurídicas em rotinas compreensíveis e documentadas.', attention: ['Como cada obrigação será cumprida', 'Quando a situação deverá ser revista'], materials: ['Minuta ou decisão final', 'Calendário e comprovantes posteriores'] }
+      ]
     }
   };
 
   const atlasTabs = Array.from(document.querySelectorAll('[data-atlas-area]'));
   const atlasStageButtons = Array.from(document.querySelectorAll('[data-atlas-stage]'));
   const atlasDetail = document.querySelector('.atlas-detail');
-  let activeAtlasArea = 'trabalhista';
+  let activeAtlasArea = 'civil';
   let activeAtlasStage = 0;
 
   const fillList = (selector, items) => {
@@ -92,6 +119,20 @@
       const li = document.createElement('li');
       li.textContent = item;
       return li;
+    }));
+  };
+
+  const bindTabKeyboard = (tabs) => {
+    tabs.forEach((tab, index) => tab.addEventListener('keydown', (event) => {
+      let nextIndex = null;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'Home') nextIndex = 0;
+      if (event.key === 'End') nextIndex = tabs.length - 1;
+      if (nextIndex === null) return;
+      event.preventDefault();
+      tabs[nextIndex].focus();
+      tabs[nextIndex].click();
     }));
   };
 
@@ -111,7 +152,11 @@
     });
     fillList('[data-atlas-attention]', stage.attention);
     fillList('[data-atlas-materials]', stage.materials);
-    atlasTabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.atlasArea === activeAtlasArea)));
+    atlasTabs.forEach((tab) => {
+      const selected = tab.dataset.atlasArea === activeAtlasArea;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
     atlasStageButtons.forEach((button) => {
       const active = Number(button.dataset.atlasStage) === activeAtlasStage;
       button.closest('li')?.classList.toggle('active', active);
@@ -131,10 +176,11 @@
     activeAtlasStage = Number(button.dataset.atlasStage);
     renderAtlas();
   }));
+  bindTabKeyboard(atlasTabs);
   renderAtlas();
 
   const lensData = {
-    locacao: {
+    imobiliario: {
       label: 'Contrato de locação',
       code: 'IMÓVEL / 001',
       title: 'Contrato de locação residencial',
@@ -147,7 +193,7 @@
         { heading: 'Saída, multa e vistoria', preview: 'O encerramento deve dialogar com prazo, conservação e entrega das chaves.', kicker: 'Ponto 05 • Encerramento', title: 'Como o contrato termina na prática?', text: 'Aviso, multa, vistoria, reparos e entrega das chaves devem formar um procedimento compreensível e documentado.', question: 'A multa, a vistoria e a devolução do imóvel estão descritas de forma compatível entre si?', keep: 'Vistorias de entrada e saída, fotos, avisos e recibo de entrega das chaves.' }
       ]
     },
-    trabalho: {
+    trabalhista: {
       label: 'Contrato de trabalho',
       code: 'TRABALHO / 001',
       title: 'Instrumento de contratação profissional',
@@ -160,7 +206,7 @@
         { heading: 'Término e consequências', preview: 'Aviso, verbas e devoluções precisam formar um procedimento claro.', kicker: 'Ponto 05 • Encerramento', title: 'O documento explica as consequências de cada forma de término?', text: 'O encerramento pode envolver aviso, valores, documentos, devolução de bens e obrigações posteriores.', question: 'Quais providências cada parte deverá cumprir quando a relação terminar?', keep: 'Avisos, termos de encerramento, comprovantes e documentos entregues.' }
       ]
     },
-    servicos: {
+    civil: {
       label: 'Prestação de serviços',
       code: 'CIVIL / 001',
       title: 'Contrato de prestação de serviços',
@@ -172,6 +218,45 @@
         { heading: 'Sigilo e propriedade intelectual', preview: 'Uso de informações e resultados precisa ter limites definidos.', kicker: 'Ponto 04 • Conteúdo', title: 'Quem poderá usar o quê depois da entrega?', text: 'Informações confidenciais, materiais preexistentes e resultados produzidos podem ter titulares e permissões diferentes.', question: 'O contrato diferencia propriedade, licença de uso e obrigação de confidencialidade?', keep: 'Arquivos originais, autorizações, registros de criação e termos de sigilo.' },
         { heading: 'Rescisão e solução de conflitos', preview: 'A saída deve prever o destino do trabalho já realizado.', kicker: 'Ponto 05 • Saída', title: 'O que acontece com entregas, valores e acessos se o contrato terminar?', text: 'Encerramento, aviso, pagamento proporcional, devolução de materiais e resolução de divergências precisam conversar.', question: 'A rescisão explica o que permanece devido e como os materiais serão entregues ou devolvidos?', keep: 'Avisos, entregas parciais, acessos concedidos e comprovantes de pagamento.' }
       ]
+    },
+    empresarial: {
+      label: 'Acordo societário',
+      code: 'EMPRESA / 001',
+      title: 'Acordo entre sócios',
+      parties: 'SÓCIOS e SOCIEDADE organizam decisões, responsabilidades e situações futuras neste exemplo educativo.',
+      clauses: [
+        { heading: 'Participações e contribuições', preview: 'Percentuais, aportes e responsabilidades devem estar relacionados.', kicker: 'Ponto 01 • Estrutura', title: 'O documento mostra com clareza o papel de cada sócio?', text: 'Participação, contribuição e responsabilidade podem ter efeitos diferentes e precisam ser compreendidas em conjunto.', question: 'O acordo diferencia participação societária, aportes e obrigações de cada pessoa?', keep: 'Contrato social, alterações, comprovantes de aporte e registros contábeis pertinentes.' },
+        { heading: 'Decisões e quóruns', preview: 'Governança precisa indicar quem decide e em quais condições.', kicker: 'Ponto 02 • Governança', title: 'Como as decisões relevantes serão aprovadas?', text: 'Matérias ordinárias e estratégicas podem exigir responsáveis, quóruns e formas de registro diferentes.', question: 'O documento define quais decisões exigem consenso, maioria ou aprovação específica?', keep: 'Atas, políticas internas e registros das deliberações.' },
+        { heading: 'Pró-labore e distribuição', preview: 'Trabalho, remuneração e lucro não são a mesma coisa.', kicker: 'Ponto 03 • Valores', title: 'As regras financeiras podem ser conferidas?', text: 'Remuneração pelo trabalho, reembolso, reservas e distribuição de resultados precisam ter critérios identificáveis.', question: 'Quando e como cada pagamento poderá ocorrer e ser comprovado?', keep: 'Demonstrativos, deliberações, comprovantes e documentos contábeis.' },
+        { heading: 'Sigilo e não concorrência', preview: 'Restrições precisam ter alcance, prazo e finalidade claros.', kicker: 'Ponto 04 • Proteção', title: 'As obrigações de proteção têm limites compreensíveis?', text: 'Informações confidenciais, relacionamento com clientes e atividades concorrentes exigem definições proporcionais.', question: 'O acordo explica o que é protegido, por quanto tempo e em qual contexto?', keep: 'Políticas de informação, contratos e registros de acesso relevantes.' },
+        { heading: 'Saída e solução de impasses', preview: 'A empresa precisa de um caminho para mudanças e divergências.', kicker: 'Ponto 05 • Transição', title: 'O que acontece se um sócio quiser sair ou houver impasse?', text: 'Avaliação de participação, pagamento, sucessão e solução de divergências devem formar um procedimento verificável.', question: 'O documento define etapas, critérios de valor e responsáveis pela transição?', keep: 'Balanços, notificações, propostas e registros das negociações.' }
+      ]
+    },
+    condominial: {
+      label: 'Convenção condominial',
+      code: 'CONDOMÍNIO / 001',
+      title: 'Convenção e regras de convivência',
+      parties: 'CONDOMÍNIO, SÍNDICO e CONDÔMINOS observam regras coletivas descritas neste exemplo educativo.',
+      clauses: [
+        { heading: 'Unidades e áreas comuns', preview: 'Uso individual e uso coletivo precisam estar diferenciados.', kicker: 'Ponto 01 • Espaços', title: 'As regras deixam claro o que é privativo e o que é comum?', text: 'Áreas, acessos, vagas e equipamentos podem ter destinações e responsabilidades diferentes.', question: 'A descrição dos espaços corresponde à realidade e aos documentos do condomínio?', keep: 'Convenção, planta, memorial, matrícula e registros de uso.' },
+        { heading: 'Assembleias e votações', preview: 'Convocação, pauta e quórum dão validade às decisões.', kicker: 'Ponto 02 • Deliberação', title: 'A decisão coletiva foi formada pelo procedimento previsto?', text: 'Prazo de convocação, pauta, participação e quórum precisam ser lidos em conjunto.', question: 'Quem pode votar, qual quórum se aplica e como a decisão será registrada?', keep: 'Edital, lista de presença, procurações e ata.' },
+        { heading: 'Despesas e rateios', preview: 'Critérios de cobrança devem poder ser conferidos.', kicker: 'Ponto 03 • Custos', title: 'O rateio explica de onde vem cada obrigação?', text: 'Despesas ordinárias, extraordinárias, fundos e critérios de divisão precisam ser identificáveis.', question: 'A cobrança corresponde à regra aprovada e ao período indicado?', keep: 'Boletos, orçamento, balancetes, atas e comprovantes.' },
+        { heading: 'Deveres e medidas internas', preview: 'Regras de convivência precisam prever comunicação e resposta.', kicker: 'Ponto 04 • Convivência', title: 'A regra e a consequência estão descritas de forma coerente?', text: 'Deveres, avisos, multas e possibilidades de manifestação devem formar um procedimento compreensível.', question: 'A pessoa afetada consegue entender o fato, a regra e a providência adotada?', keep: 'Regimento, notificações, registros e comunicações.' },
+        { heading: 'Administração e representação', preview: 'Poderes e prestação de contas precisam ter limites visíveis.', kicker: 'Ponto 05 • Gestão', title: 'Quem pode agir em nome do condomínio e até onde?', text: 'Competências do síndico, conselho, administradora e assembleia podem ser diferentes.', question: 'O documento identifica responsáveis, limites e formas de prestação de contas?', keep: 'Atas de eleição, contratos de administração e demonstrativos.' }
+      ]
+    },
+    familia: {
+      label: 'Acordo familiar',
+      code: 'FAMÍLIA / 001',
+      title: 'Acordo de convivência e responsabilidades',
+      parties: 'FAMILIARES organizam responsabilidades, comunicação e rotina neste exemplo exclusivamente educativo.',
+      clauses: [
+        { heading: 'Pessoas e responsabilidades', preview: 'O acordo deve indicar quem participa e o que cabe a cada pessoa.', kicker: 'Ponto 01 • Pessoas', title: 'As responsabilidades estão descritas de forma prática?', text: 'Necessidades, capacidade de cuidado e rotina precisam ser consideradas sem expressões vagas.', question: 'Cada pessoa consegue compreender o que deverá fazer e em quais situações?', keep: 'Documentos pessoais, certidões e registros da rotina relevante.' },
+        { heading: 'Convivência e calendário', preview: 'Datas e transições precisam funcionar no cotidiano.', kicker: 'Ponto 02 • Rotina', title: 'O calendário prevê a vida real e situações de mudança?', text: 'Dias, horários, férias, deslocamentos e comunicação podem exigir regras simples e ajustáveis.', question: 'O texto explica horários, responsabilidades de transporte e forma de avisar mudanças?', keep: 'Calendários, comprovantes de atividades e comunicações importantes.' },
+        { heading: 'Despesas e contribuições', preview: 'Valores e responsabilidades financeiras precisam ser verificáveis.', kicker: 'Ponto 03 • Despesas', title: 'O acordo distingue despesas regulares e extraordinárias?', text: 'Valor, vencimento, reajuste, reembolso e comprovação devem ser lidos em conjunto.', question: 'Quem paga, quando paga e como uma despesa adicional será aprovada?', keep: 'Comprovantes de renda, despesas, pagamentos e reembolsos.' },
+        { heading: 'Decisões importantes', preview: 'Saúde, educação e mudanças relevantes pedem um processo claro.', kicker: 'Ponto 04 • Decisões', title: 'Como serão tomadas as decisões que afetam a família?', text: 'Informação prévia, participação e registro ajudam a reduzir divergências sobre escolhas relevantes.', question: 'O acordo define quais decisões precisam ser compartilhadas e por qual canal?', keep: 'Registros escolares, médicos e comunicações entre responsáveis.' },
+        { heading: 'Revisão e solução de divergências', preview: 'A vida muda e o acordo precisa prever como será revisto.', kicker: 'Ponto 05 • Revisão', title: 'Existe um caminho para ajustar o acordo quando a realidade mudar?', text: 'Marcos de revisão, diálogo e eventual formalização ajudam a manter o documento útil.', question: 'Quais mudanças justificam nova conversa e como ela será registrada?', keep: 'Acordo vigente, registros das mudanças e propostas de ajuste.' }
+      ]
     }
   };
 
@@ -181,7 +266,7 @@
   const lensDialog = document.querySelector('[data-lens-dialog]');
   const lensSummaryList = document.querySelector('[data-lens-summary-list]');
   const lensCopyStatus = document.querySelector('[data-lens-copy-status]');
-  let activeLensDocument = 'locacao';
+  let activeLensDocument = 'civil';
   let activeLensClause = 0;
   let lensTrigger = null;
 
@@ -241,7 +326,11 @@
       });
       return button;
     }));
-    lensTabs.forEach((tab) => tab.setAttribute('aria-selected', String(tab.dataset.lensDocument === activeLensDocument)));
+    lensTabs.forEach((tab) => {
+      const selected = tab.dataset.lensDocument === activeLensDocument;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+    });
     renderLensClause();
   };
 
@@ -250,6 +339,7 @@
     activeLensClause = 0;
     renderLensDocument();
   }));
+  bindTabKeyboard(lensTabs);
   document.querySelector('[data-lens-prev]')?.addEventListener('click', () => {
     activeLensClause = Math.max(0, activeLensClause - 1);
     renderLensClause();

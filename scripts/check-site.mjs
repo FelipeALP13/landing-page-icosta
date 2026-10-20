@@ -13,11 +13,25 @@ const report = {
   sectionCount: (html.match(/<section/g) || []).length,
   metaDescription: /name="description"/.test(html),
   structuredData: /application\/ld\+json/.test(html),
+  atlasAreaCount: (html.match(/data-atlas-area=/g) || []).length,
+  lensAreaCount: (html.match(/data-lens-document=/g) || []).length,
+  professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.png/.test(html),
+  unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
   missingLocalAssets: missing,
 };
 
 console.log(JSON.stringify(report, null, 2));
 
-if (!report.title || report.h1Count !== 1 || !report.metaDescription || !report.structuredData || missing.length) {
+if (
+  !report.title ||
+  report.h1Count !== 1 ||
+  !report.metaDescription ||
+  !report.structuredData ||
+  report.atlasAreaCount !== 6 ||
+  report.lensAreaCount !== 6 ||
+  !report.professionalPhoto ||
+  report.unresolvedPlaceholders ||
+  missing.length
+) {
   process.exit(1);
 }

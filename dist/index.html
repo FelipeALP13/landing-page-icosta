@@ -23,6 +23,7 @@
     "@type": "LegalService",
     "name": "ICosta Advocacia",
     "url": "https://icosta-advocacia.saltytern4.chatgpt.site/",
+    "logo": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/logo.svg",
     "sameAs": ["https://www.instagram.com/i.costaadvocacia/"],
     "email": "contato@icosta.adv.br",
     "telephone": "+55 12 98103-9999",
@@ -35,9 +36,15 @@
       "addressCountry": "BR"
     },
     "areaServed": "São José dos Campos, SP",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "WhatsApp",
+      "telephone": "+55 12 98103-9999",
+      "availableLanguage": "Portuguese"
+    },
     "knowsAbout": ["Direito Civil", "Direito Trabalhista", "Direito Empresarial", "Direito Condominial", "Direito Imobiliário", "Direito de Família"],
     "employee": [
-      {"@type": "Person", "name": "Isilda Maria da Costa e Silva"},
+      {"@type": "Person", "name": "Isilda Maria da Costa e Silva", "image": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/isilda-maria-da-costa-e-silva.png"},
       {"@type": "Person", "name": "Simone da Costa e Silva"}
     ]
   }
@@ -101,6 +108,8 @@
 
     <section class="ticker" aria-label="Áreas jurídicas">
       <div class="ticker-track" aria-hidden="true">
+        <span>Civil <i>✦</i> Trabalhista <i>✦</i> Empresarial <i>✦</i> Condominial <i>✦</i> Imobiliário <i>✦</i> Família <i>✦</i></span>
+        <span>Civil <i>✦</i> Trabalhista <i>✦</i> Empresarial <i>✦</i> Condominial <i>✦</i> Imobiliário <i>✦</i> Família <i>✦</i></span>
         <span>Civil <i>✦</i> Trabalhista <i>✦</i> Empresarial <i>✦</i> Condominial <i>✦</i> Imobiliário <i>✦</i> Família <i>✦</i></span>
         <span>Civil <i>✦</i> Trabalhista <i>✦</i> Empresarial <i>✦</i> Condominial <i>✦</i> Imobiliário <i>✦</i> Família <i>✦</i></span>
       </div>
@@ -180,7 +189,6 @@
             <a href="#contato" aria-label="Falar sobre Direito de Família">↗</a>
           </article>
         </div>
-        <p class="practice-boundary reveal">O escritório não atua na área criminal.</p>
       </div>
     </section>
 
@@ -233,16 +241,19 @@
             <div class="atlas-console-title"><span class="atlas-status"></span><p>Mapa de contexto</p><small>IC / 01</small></div>
             <p class="atlas-question">Qual perspectiva você quer explorar?</p>
             <div class="atlas-tabs" role="tablist" aria-label="Áreas jurídicas">
-              <button type="button" role="tab" aria-selected="true" data-atlas-area="trabalhista"><span>01</span>Trabalhista</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="civil"><span>02</span>Civil</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="imobiliario"><span>03</span>Imobiliário</button>
+              <button type="button" role="tab" aria-selected="true" data-atlas-area="civil"><span>01</span>Civil</button>
+              <button type="button" role="tab" aria-selected="false" data-atlas-area="trabalhista"><span>02</span>Trabalhista</button>
+              <button type="button" role="tab" aria-selected="false" data-atlas-area="empresarial"><span>03</span>Empresarial</button>
+              <button type="button" role="tab" aria-selected="false" data-atlas-area="condominial"><span>04</span>Condominial</button>
+              <button type="button" role="tab" aria-selected="false" data-atlas-area="imobiliario"><span>05</span>Imobiliário</button>
+              <button type="button" role="tab" aria-selected="false" data-atlas-area="familia"><span>06</span>Família</button>
             </div>
             <div class="atlas-privacy"><span aria-hidden="true">◉</span><p><strong>Navegação privada</strong>Esta experiência não solicita nem armazena dados.</p></div>
           </aside>
 
           <div class="atlas-workspace">
             <div class="atlas-workspace-head">
-              <div><small>Área selecionada</small><p data-atlas-area-label>Direito Trabalhista</p></div>
+              <div><small>Área selecionada</small><p data-atlas-area-label>Direito Civil</p></div>
               <span>Mapa educativo • 4 movimentos</span>
             </div>
 
@@ -256,8 +267,8 @@
             <article class="atlas-detail" aria-live="polite">
               <div class="atlas-detail-main">
                 <p data-atlas-kicker>Movimento 01 — Contexto</p>
-                <h3 data-atlas-title>O vínculo e a sequência dos fatos vêm antes da conclusão.</h3>
-                <p data-atlas-description>Datas, funções, comunicações e mudanças na relação de trabalho ajudam a construir uma leitura mais precisa do cenário.</p>
+                <h3 data-atlas-title>A relação entre as pessoas explica o que o documento sozinho não mostra.</h3>
+                <p data-atlas-description>Origem do compromisso, expectativas, comunicações e acontecimentos ajudam a compreender uma questão civil.</p>
               </div>
               <div class="atlas-detail-grid">
                 <div><small>Pontos de atenção</small><ul data-atlas-attention></ul></div>
@@ -296,48 +307,51 @@
           </div>
 
           <div class="lens-document-tabs" role="tablist" aria-label="Escolher documento ilustrativo">
-            <button type="button" role="tab" aria-selected="true" data-lens-document="locacao"><span>01</span>Contrato de locação</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="trabalho"><span>02</span>Contrato de trabalho</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="servicos"><span>03</span>Prestação de serviços</button>
+            <button type="button" role="tab" aria-selected="true" data-lens-document="civil"><span>01</span>Civil</button>
+            <button type="button" role="tab" aria-selected="false" data-lens-document="trabalhista"><span>02</span>Trabalhista</button>
+            <button type="button" role="tab" aria-selected="false" data-lens-document="empresarial"><span>03</span>Empresarial</button>
+            <button type="button" role="tab" aria-selected="false" data-lens-document="condominial"><span>04</span>Condominial</button>
+            <button type="button" role="tab" aria-selected="false" data-lens-document="imobiliario"><span>05</span>Imobiliário</button>
+            <button type="button" role="tab" aria-selected="false" data-lens-document="familia"><span>06</span>Família</button>
           </div>
 
           <div class="lens-workspace">
             <article class="document-sheet" aria-label="Documento ilustrativo">
               <div class="document-watermark" aria-hidden="true">IC</div>
               <header class="document-header">
-                <div><span>Documento ilustrativo</span><p data-lens-doc-code>IMÓVEL / 001</p></div>
+                <div><span>Documento ilustrativo</span><p data-lens-doc-code>CIVIL / 001</p></div>
                 <small>Página 1 de 1</small>
               </header>
               <div class="document-title">
                 <p>Instrumento particular</p>
-                <h3 data-lens-doc-title>Contrato de locação residencial</h3>
+                <h3 data-lens-doc-title>Contrato de prestação de serviços</h3>
                 <span>Modelo educativo — dados fictícios</span>
               </div>
-              <div class="document-parties" data-lens-parties>LOCADOR e LOCATÁRIO, devidamente identificados, ajustam as condições descritas neste instrumento.</div>
+              <div class="document-parties" data-lens-parties>CONTRATANTE e PRESTADOR ajustam o escopo, as responsabilidades e as condições deste exemplo educativo.</div>
               <div class="document-clauses" data-lens-clauses>
-                <button type="button" class="lens-clause active" data-lens-clause="0" aria-pressed="true"><b>01</b><span><strong>Objeto e identificação do imóvel</strong><i>O contrato deve permitir compreender exatamente qual bem está sendo locado.</i></span></button>
-                <button type="button" class="lens-clause" data-lens-clause="1" aria-pressed="false"><b>02</b><span><strong>Prazo e renovação</strong><i>A duração influencia saída, continuidade e planejamento das partes.</i></span></button>
-                <button type="button" class="lens-clause" data-lens-clause="2" aria-pressed="false"><b>03</b><span><strong>Valor, reajuste e encargos</strong><i>Aluguel, índice e despesas precisam estar claramente separados.</i></span></button>
-                <button type="button" class="lens-clause" data-lens-clause="3" aria-pressed="false"><b>04</b><span><strong>Garantias</strong><i>Caução, fiança ou seguro possuem efeitos e responsabilidades diferentes.</i></span></button>
-                <button type="button" class="lens-clause" data-lens-clause="4" aria-pressed="false"><b>05</b><span><strong>Saída, multa e vistoria</strong><i>O encerramento deve dialogar com prazo, conservação e entrega das chaves.</i></span></button>
+                <button type="button" class="lens-clause active" data-lens-clause="0" aria-pressed="true"><b>01</b><span><strong>Objeto e entregas</strong><i>O serviço precisa ser reconhecível quando estiver concluído.</i></span></button>
+                <button type="button" class="lens-clause" data-lens-clause="1" aria-pressed="false"><b>02</b><span><strong>Prazos e dependências</strong><i>Uma entrega pode depender de informações fornecidas por ambas as partes.</i></span></button>
+                <button type="button" class="lens-clause" data-lens-clause="2" aria-pressed="false"><b>03</b><span><strong>Preço, despesas e reajustes</strong><i>Pagamento deve acompanhar escopo e marcos verificáveis.</i></span></button>
+                <button type="button" class="lens-clause" data-lens-clause="3" aria-pressed="false"><b>04</b><span><strong>Sigilo e propriedade intelectual</strong><i>Uso de informações e resultados precisa ter limites definidos.</i></span></button>
+                <button type="button" class="lens-clause" data-lens-clause="4" aria-pressed="false"><b>05</b><span><strong>Rescisão e solução de conflitos</strong><i>A saída deve prever o destino do trabalho já realizado.</i></span></button>
               </div>
               <footer class="document-signature"><span>Assinatura das partes</span><span>Data</span></footer>
             </article>
 
             <aside class="lens-insight" aria-live="polite">
               <div class="lens-insight-top">
-                <p data-lens-insight-kicker>Ponto 01 • Identificação</p>
+                <p data-lens-insight-kicker>Ponto 01 • Escopo</p>
                 <span data-lens-progress>1 / 5</span>
               </div>
-              <h3 data-lens-insight-title>Você sabe exatamente o que está sendo contratado?</h3>
-              <p data-lens-insight-text>Endereço, unidade, vagas, áreas vinculadas e condições de uso precisam permitir a identificação precisa do imóvel.</p>
+              <h3 data-lens-insight-title>As partes saberão reconhecer uma entrega completa?</h3>
+              <p data-lens-insight-text>Escopo, quantidade, formato, limites e critérios de aceite reduzem interpretações diferentes sobre o que foi contratado.</p>
               <div class="lens-question">
                 <small>Pergunta para levar à conversa</small>
-                <p data-lens-question>O documento e a vistoria descrevem o mesmo imóvel e seus acessórios?</p>
+                <p data-lens-question>O contrato distingue o que está incluído, o que não está e como a entrega será aprovada?</p>
               </div>
               <div class="lens-keep">
                 <small>Vale manter organizado</small>
-                <p data-lens-keep>Contrato, laudo de vistoria, fotos datadas e comprovantes relacionados ao imóvel.</p>
+                <p data-lens-keep>Proposta, briefing, cronograma e registros de aprovação.</p>
               </div>
               <div class="lens-navigation">
                 <button type="button" data-lens-prev disabled aria-label="Ponto anterior">←</button>
@@ -379,7 +393,7 @@
         </div>
         <div class="professionals-grid">
           <article class="professional-card reveal">
-            <span class="professional-initials" aria-hidden="true">IC</span>
+            <img class="professional-photo" src="assets/isilda-maria-da-costa-e-silva.png" alt="Dra. Isilda Maria da Costa e Silva" width="1256" height="1256" loading="lazy">
             <div><p>Advogada</p><h3>Isilda Maria<br>da Costa e Silva</h3><span>OAB/SP 56.944</span></div>
           </article>
           <article class="professional-card reveal">
@@ -418,7 +432,6 @@
             <span><small>WhatsApp</small>(12) 98103-9999</span><b aria-hidden="true">↗</b>
           </a>
           <a class="contact-detail" href="mailto:contato@icosta.adv.br"><span>E-mail</span><p>contato@icosta.adv.br</p></a>
-          <a class="contact-detail" href="tel:+5512981039999"><span>Telefone</span><p>(12) 98103-9999</p></a>
           <a class="contact-detail contact-address" href="https://www.google.com/maps/search/?api=1&amp;query=Avenida+Alfredo+Ign%C3%A1cio+Nogueira+Penido+335+sala+104+S%C3%A3o+Jos%C3%A9+dos+Campos+SP+12246-000" target="_blank" rel="noopener noreferrer"><span>Endereço</span><p>Avenida Alfredo Ignácio Nogueira Penido, 335, sala 104<br>São José dos Campos/SP · CEP 12.246-000</p></a>
           <a class="contact-detail" href="https://www.instagram.com/i.costaadvocacia/" target="_blank" rel="noopener noreferrer"><span>Instagram</span><p>@i.costaadvocacia</p></a>
           <p class="contact-disclaimer">O envio de mensagem não cria, por si só, relação advogado-cliente. Evite encaminhar informações confidenciais antes da confirmação do atendimento.</p>
@@ -446,6 +459,7 @@
     <div class="shell footer-bottom">
       <p>© <span data-year></span> ICosta Advocacia. Todos os direitos reservados.</p>
       <p>Publicidade de caráter exclusivamente informativo, nos termos do Código de Ética e do Provimento nº 205/2021 da OAB.</p>
+      <p class="developer-credit">Desenvolvido por <strong>FelipeALP13</strong></p>
     </div>
   </footer>
 
