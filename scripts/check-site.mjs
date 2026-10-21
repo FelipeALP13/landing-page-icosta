@@ -53,6 +53,8 @@ const report = {
   singleTopContactAction: topContactLinkCount === 1,
   heroPrimaryPractice: /class="button button-gold" href="#atuacao">Conheça nossa atuação/.test(html),
   heroSecondaryAtlas: /class="button-quiet" href="#mapa-juridico">Explore o ICosta Atlas/.test(html),
+  consistentHeroMonogram: /class="badge-ring"><img src="assets\/monogram\.svg"/.test(html),
+  emphasizedHeroMessage: /Uma nova fase\.<br><strong>A mesma responsabilidade\.<\/strong>/.test(html),
   inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
   headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
@@ -88,6 +90,8 @@ if (
   !report.singleTopContactAction ||
   !report.heroPrimaryPractice ||
   !report.heroSecondaryAtlas ||
+  !report.consistentHeroMonogram ||
+  !report.emphasizedHeroMessage ||
   !report.inertAccessPanel ||
   !report.headerBackdrop ||
   report.unresolvedPlaceholders ||
