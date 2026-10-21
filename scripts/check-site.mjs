@@ -3,6 +3,8 @@ import path from 'node:path';
 
 const root = path.resolve('dist');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+const script = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
 const references = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
   .map((match) => match[1])
   .filter((reference) => !/^(?:https?:|mailto:|tel:)/.test(reference));
@@ -74,6 +76,7 @@ const report = {
   professionalIdentification: /Isilda Maria da Costa e Silva — OAB\/SP 56\.944/.test(html) && /Simone da Costa e Silva — OAB\/SP 259\.760/.test(html),
   officeRegistration: /Sociedade registrada na OAB\/SP sob nº 8\.870/.test(html) && /"propertyID": "OAB\/SP"[\s\S]*?"value": "8\.870"/.test(html),
   officeTelephone: /"telephone": "\+55 12 3922-9758"/.test(html) && /href="tel:\+551239229758"/.test(html),
+  colorThemes: /data-theme-toggle/.test(html) && /html\[data-theme="dark"\]/.test(css) && /localStorage\.setItem\('icosta-theme'/.test(script),
   informationalAdvertisingNotice: /Publicidade de caráter exclusivamente informativo/.test(html),
   noResultPromiseNotice: /Sem promessa de resultado/.test(html),
   privacyRightsNotice: /solicitar confirmação do tratamento, acesso, correção/.test(html),
@@ -119,6 +122,7 @@ if (
   !report.professionalIdentification ||
   !report.officeRegistration ||
   !report.officeTelephone ||
+  !report.colorThemes ||
   !report.informationalAdvertisingNotice ||
   !report.noResultPromiseNotice ||
   !report.privacyRightsNotice ||

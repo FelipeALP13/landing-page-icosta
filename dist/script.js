@@ -7,6 +7,27 @@
   const menu = document.querySelector('[data-menu]');
   const progress = document.querySelector('[data-progress]');
   const mobileMenuQuery = window.matchMedia('(max-width: 1050px)');
+  const themeButton = document.querySelector('[data-theme-toggle]');
+  const themeLabel = document.querySelector('[data-theme-label]');
+
+  const applyTheme = (theme, { persist = true } = {}) => {
+    const selectedTheme = theme === 'dark' ? 'dark' : 'light';
+    const isDark = selectedTheme === 'dark';
+    root.dataset.theme = selectedTheme;
+    themeButton?.setAttribute('aria-pressed', String(isDark));
+    themeButton?.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
+    if (themeLabel) themeLabel.textContent = isDark ? 'Tema claro' : 'Tema escuro';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#020e0b' : '#071c17');
+    if (persist) {
+      try { localStorage.setItem('icosta-theme', selectedTheme); }
+      catch { /* Theme remains active for this visit. */ }
+    }
+  };
+
+  applyTheme(root.dataset.theme, { persist: false });
+  themeButton?.addEventListener('click', () => {
+    applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
 
   const trapFocus = (event, container, additional = []) => {
     if (event.key !== 'Tab' || !container) return;
