@@ -24,6 +24,8 @@ const marketingRiskPatterns = [
   ['promessa de resultado', /resultado garantido|garantia de resultado|causa ganha/i],
   ['promoção de preço', /consulta gratuita|desconto (?:em|nos) honorários|menor preço/i],
   ['autoengrandecimento', /melhor escritório|número 1|o mais premiado/i],
+  ['comparação ou êxito', /mais eficiente que|taxa de sucesso|histórico de êxito|resultados obtidos/i],
+  ['pressão comercial', /últimas vagas|contrate agora|não perca esta oportunidade/i],
 ];
 const marketingRiskClaims = marketingRiskPatterns
   .filter(([, pattern]) => pattern.test(html))
@@ -46,6 +48,9 @@ const report = {
   professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.webp/.test(html),
   socialImage: /property="og:image"/.test(html),
   twitterCard: /name="twitter:card"/.test(html),
+  localSeoTitle: /<title>ICosta Advocacia \| Advocacia em São José dos Campos<\/title>/.test(html),
+  robotsMeta: /name="robots" content="index,follow,max-image-preview:large"/.test(html),
+  selfHostedFonts: /assets\/fonts\/dm-sans-latin\.woff2/.test(html) && /assets\/fonts\/newsreader-latin\.woff2/.test(html) && !/fonts\.googleapis\.com|fonts\.gstatic\.com/.test(html),
   openingHours: /"opens": "08:00"/.test(html) && /"closes": "17:30"/.test(html),
   familyStory: /Mãe e filha, Isilda e Simone/.test(html),
   atlasInPrimaryNavigation: /<nav[^>]+id="site-nav"[\s\S]*?<a href="#mapa-juridico">ICosta Atlas<\/a>/.test(html),
@@ -55,6 +60,8 @@ const report = {
   heroSecondaryAtlas: /class="button-quiet" href="#mapa-juridico">Explore o ICosta Atlas/.test(html),
   consistentHeroMonogram: /class="badge-ring"><img src="assets\/monogram\.svg"/.test(html),
   emphasizedHeroMessage: /Uma nova fase\.<br><strong>A mesma responsabilidade\.<\/strong>/.test(html),
+  accessibleInteractivePanels: /id="atlas-panel" role="tabpanel"/.test(html) && /id="lens-panel" role="tabpanel"/.test(html),
+  labelledDialogs: /data-lens-dialog aria-labelledby="lens-dialog-title"/.test(html) && /data-legal-dialog aria-labelledby="legal-dialog-title"/.test(html) && /data-access-panel role="dialog" aria-modal="true"/.test(html),
   inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
   headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
@@ -67,6 +74,7 @@ const report = {
   professionalIdentification: /Isilda Maria da Costa e Silva — OAB\/SP 56\.944/.test(html) && /Simone da Costa e Silva — OAB\/SP 259\.760/.test(html),
   informationalAdvertisingNotice: /Publicidade de caráter exclusivamente informativo/.test(html),
   noResultPromiseNotice: /Sem promessa de resultado/.test(html),
+  privacyRightsNotice: /solicitar confirmação do tratamento, acesso, correção/.test(html),
   marketingRiskClaims,
 };
 
@@ -83,6 +91,9 @@ if (
   !report.professionalPhoto ||
   !report.socialImage ||
   !report.twitterCard ||
+  !report.localSeoTitle ||
+  !report.robotsMeta ||
+  !report.selfHostedFonts ||
   !report.openingHours ||
   !report.familyStory ||
   !report.atlasInPrimaryNavigation ||
@@ -92,6 +103,8 @@ if (
   !report.heroSecondaryAtlas ||
   !report.consistentHeroMonogram ||
   !report.emphasizedHeroMessage ||
+  !report.accessibleInteractivePanels ||
+  !report.labelledDialogs ||
   !report.inertAccessPanel ||
   !report.headerBackdrop ||
   report.unresolvedPlaceholders ||
@@ -104,6 +117,7 @@ if (
   !report.professionalIdentification ||
   !report.informationalAdvertisingNotice ||
   !report.noResultPromiseNotice ||
+  !report.privacyRightsNotice ||
   marketingRiskClaims.length
 ) {
   process.exit(1);

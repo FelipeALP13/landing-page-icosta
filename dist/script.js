@@ -8,6 +8,22 @@
   const progress = document.querySelector('[data-progress]');
   const mobileMenuQuery = window.matchMedia('(max-width: 1050px)');
 
+  const trapFocus = (event, container, additional = []) => {
+    if (event.key !== 'Tab' || !container) return;
+    const focusable = [...additional, ...container.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element, index, items) => items.indexOf(element) === index && !element.hidden && element.getClientRects().length);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
   const setMenuState = (open, { restoreFocus = false } = {}) => {
     const active = mobileMenuQuery.matches && open;
     menuButton?.setAttribute('aria-expanded', String(active));
@@ -17,8 +33,20 @@
 
     if (menu) {
       menu.inert = mobileMenuQuery.matches && !active;
-      if (mobileMenuQuery.matches) menu.setAttribute('aria-hidden', String(!active));
-      else menu.removeAttribute('aria-hidden');
+      if (mobileMenuQuery.matches) {
+        menu.setAttribute('aria-hidden', String(!active));
+        if (active) {
+          menu.setAttribute('role', 'dialog');
+          menu.setAttribute('aria-modal', 'true');
+        } else {
+          menu.removeAttribute('role');
+          menu.removeAttribute('aria-modal');
+        }
+      } else {
+        menu.removeAttribute('aria-hidden');
+        menu.removeAttribute('role');
+        menu.removeAttribute('aria-modal');
+      }
     }
 
     if (active) requestAnimationFrame(() => menu?.querySelector('a, button')?.focus());
@@ -174,6 +202,7 @@
       tab.setAttribute('aria-selected', String(selected));
       tab.tabIndex = selected ? 0 : -1;
     });
+    document.querySelector('#atlas-panel')?.setAttribute('aria-labelledby', `atlas-tab-${activeAtlasArea}`);
     atlasStageButtons.forEach((button) => {
       const active = Number(button.dataset.atlasStage) === activeAtlasStage;
       button.closest('li')?.classList.toggle('active', active);
@@ -348,6 +377,7 @@
       tab.setAttribute('aria-selected', String(selected));
       tab.tabIndex = selected ? 0 : -1;
     });
+    document.querySelector('#lens-panel')?.setAttribute('aria-labelledby', `lens-tab-${activeLensDocument}`);
     renderLensClause();
   };
 
@@ -483,6 +513,7 @@
   };
   accessButtons.forEach((button) => button.addEventListener('click', () => openAccess(button)));
   document.querySelector('[data-access-close]')?.addEventListener('click', closeAccess);
+  accessPanel?.addEventListener('keydown', (event) => trapFocus(event, accessPanel));
 
   document.querySelectorAll('[data-font]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -537,6 +568,10 @@
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab' && mobileMenuQuery.matches && menu?.classList.contains('open')) {
+      trapFocus(event, menu, menuButton ? [menuButton] : []);
+      return;
+    }
     if (event.key !== 'Escape') return;
     closeMenu({ restoreFocus: true });
     closeAccess();

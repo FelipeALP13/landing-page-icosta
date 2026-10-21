@@ -3,16 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ICosta Advocacia e Consultoria Jurídica | Direito com contexto e clareza</title>
+  <title>ICosta Advocacia | Advocacia em São José dos Campos</title>
   <meta name="description" content="Advocacia e consultoria jurídica em São José dos Campos, com atuação em Direito Civil, Trabalhista, Empresarial, Condominial, Imobiliário e de Família.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#071c17">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="ICosta Advocacia e Consultoria Jurídica">
+  <meta property="og:title" content="ICosta Advocacia e Consultoria Jurídica | São José dos Campos">
   <meta property="og:description" content="Direito com contexto. Estratégia com clareza.">
   <meta property="og:url" content="https://icosta-advocacia.saltytern4.chatgpt.site/">
   <meta property="og:site_name" content="ICosta Advocacia e Consultoria Jurídica">
   <meta property="og:image" content="https://icosta-advocacia.saltytern4.chatgpt.site/assets/hero-architecture-v2.jpg">
+  <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1672">
   <meta property="og:image:height" content="936">
   <meta property="og:image:alt" content="Arquitetura contemporânea em tons verdes, identidade visual da ICosta Advocacia">
@@ -23,17 +26,19 @@
   <meta name="twitter:image:alt" content="Arquitetura contemporânea em tons verdes, identidade visual da ICosta Advocacia">
   <link rel="canonical" href="https://icosta-advocacia.saltytern4.chatgpt.site/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/hero-architecture-v2.jpg" as="image" type="image/jpeg" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LegalService",
+    "@id": "https://icosta-advocacia.saltytern4.chatgpt.site/#escritorio",
     "name": "ICosta Advocacia e Consultoria Jurídica",
     "url": "https://icosta-advocacia.saltytern4.chatgpt.site/",
     "logo": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/logo.svg",
+    "image": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/hero-architecture-v2.jpg",
     "sameAs": ["https://www.instagram.com/i.costaadvocacia/"],
     "email": "contato@icosta.adv.br",
     "telephone": "+55 12 98103-9999",
@@ -51,7 +56,7 @@
       "postalCode": "12246-000",
       "addressCountry": "BR"
     },
-    "areaServed": "São José dos Campos, SP",
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Avenida+Alfredo+Ign%C3%A1cio+Nogueira+Penido+335+sala+104+S%C3%A3o+Jos%C3%A9+dos+Campos+SP+12246-000",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "WhatsApp",
@@ -264,17 +269,17 @@
             <div class="atlas-console-title"><span class="atlas-status"></span><p>Mapa de contexto</p><small>IC / 01</small></div>
             <p class="atlas-question">Qual perspectiva você quer explorar?</p>
             <div class="atlas-tabs" role="tablist" aria-label="Áreas jurídicas">
-              <button type="button" role="tab" aria-selected="true" data-atlas-area="civil"><span>01</span>Civil</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="trabalhista"><span>02</span>Trabalhista</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="empresarial"><span>03</span>Empresarial</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="condominial"><span>04</span>Condominial</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="imobiliario"><span>05</span>Imobiliário</button>
-              <button type="button" role="tab" aria-selected="false" data-atlas-area="familia"><span>06</span>Família</button>
+              <button type="button" id="atlas-tab-civil" role="tab" aria-controls="atlas-panel" aria-selected="true" data-atlas-area="civil"><span>01</span>Civil</button>
+              <button type="button" id="atlas-tab-trabalhista" role="tab" aria-controls="atlas-panel" aria-selected="false" data-atlas-area="trabalhista"><span>02</span>Trabalhista</button>
+              <button type="button" id="atlas-tab-empresarial" role="tab" aria-controls="atlas-panel" aria-selected="false" data-atlas-area="empresarial"><span>03</span>Empresarial</button>
+              <button type="button" id="atlas-tab-condominial" role="tab" aria-controls="atlas-panel" aria-selected="false" data-atlas-area="condominial"><span>04</span>Condominial</button>
+              <button type="button" id="atlas-tab-imobiliario" role="tab" aria-controls="atlas-panel" aria-selected="false" data-atlas-area="imobiliario"><span>05</span>Imobiliário</button>
+              <button type="button" id="atlas-tab-familia" role="tab" aria-controls="atlas-panel" aria-selected="false" data-atlas-area="familia"><span>06</span>Família</button>
             </div>
             <div class="atlas-privacy"><span aria-hidden="true">◉</span><p><strong>Navegação privada</strong>Esta experiência não solicita nem armazena dados.</p></div>
           </aside>
 
-          <div class="atlas-workspace">
+          <div class="atlas-workspace" id="atlas-panel" role="tabpanel" aria-labelledby="atlas-tab-civil" tabindex="0">
             <div class="atlas-workspace-head">
               <div><small>Área selecionada</small><p data-atlas-area-label>Direito Civil</p></div>
               <span>Mapa educativo • 4 movimentos</span>
@@ -330,15 +335,15 @@
           </div>
 
           <div class="lens-document-tabs" role="tablist" aria-label="Escolher documento ilustrativo">
-            <button type="button" role="tab" aria-selected="true" data-lens-document="civil"><span>01</span>Civil</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="trabalhista"><span>02</span>Trabalhista</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="empresarial"><span>03</span>Empresarial</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="condominial"><span>04</span>Condominial</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="imobiliario"><span>05</span>Imobiliário</button>
-            <button type="button" role="tab" aria-selected="false" data-lens-document="familia"><span>06</span>Família</button>
+            <button type="button" id="lens-tab-civil" role="tab" aria-controls="lens-panel" aria-selected="true" data-lens-document="civil"><span>01</span>Civil</button>
+            <button type="button" id="lens-tab-trabalhista" role="tab" aria-controls="lens-panel" aria-selected="false" data-lens-document="trabalhista"><span>02</span>Trabalhista</button>
+            <button type="button" id="lens-tab-empresarial" role="tab" aria-controls="lens-panel" aria-selected="false" data-lens-document="empresarial"><span>03</span>Empresarial</button>
+            <button type="button" id="lens-tab-condominial" role="tab" aria-controls="lens-panel" aria-selected="false" data-lens-document="condominial"><span>04</span>Condominial</button>
+            <button type="button" id="lens-tab-imobiliario" role="tab" aria-controls="lens-panel" aria-selected="false" data-lens-document="imobiliario"><span>05</span>Imobiliário</button>
+            <button type="button" id="lens-tab-familia" role="tab" aria-controls="lens-panel" aria-selected="false" data-lens-document="familia"><span>06</span>Família</button>
           </div>
 
-          <div class="lens-workspace">
+          <div class="lens-workspace" id="lens-panel" role="tabpanel" aria-labelledby="lens-tab-civil" tabindex="0">
             <article class="document-sheet" aria-label="Documento ilustrativo">
               <div class="document-watermark" aria-hidden="true">IC</div>
               <header class="document-header">
@@ -396,8 +401,8 @@
         </div>
       </div>
 
-      <dialog class="lens-dialog" data-lens-dialog>
-        <div class="lens-dialog-head"><div><small>ICosta Lente</small><p data-lens-dialog-title>Roteiro de leitura</p></div><button type="button" data-lens-dialog-close aria-label="Fechar roteiro">×</button></div>
+      <dialog class="lens-dialog" data-lens-dialog aria-labelledby="lens-dialog-title">
+        <div class="lens-dialog-head"><div><small>ICosta Lente</small><p id="lens-dialog-title" data-lens-dialog-title>Roteiro de leitura</p></div><button type="button" data-lens-dialog-close aria-label="Fechar roteiro">×</button></div>
         <div class="lens-dialog-body">
           <p>Use estas perguntas para organizar uma conversa sobre o documento. O roteiro é educativo e não substitui análise jurídica.</p>
           <ol data-lens-summary-list></ol>
@@ -492,7 +497,7 @@
     <span>Acessibilidade</span>
   </button>
 
-  <aside class="access-panel" id="access-panel" data-access-panel aria-labelledby="access-title" aria-hidden="true" inert>
+  <aside class="access-panel" id="access-panel" data-access-panel role="dialog" aria-modal="true" aria-labelledby="access-title" aria-hidden="true" inert>
     <div class="access-head"><h2 id="access-title">Acessibilidade</h2><button type="button" data-access-close aria-label="Fechar recursos de acessibilidade">×</button></div>
     <p>Ajuste a visualização conforme sua preferência.</p>
     <div class="access-controls">
@@ -504,8 +509,8 @@
     </div>
   </aside>
 
-  <dialog class="legal-dialog" data-legal-dialog>
-    <div class="dialog-head"><p>ICosta Advocacia e Consultoria Jurídica</p><button type="button" data-dialog-close aria-label="Fechar">×</button></div>
+  <dialog class="legal-dialog" data-legal-dialog aria-labelledby="legal-dialog-title">
+    <div class="dialog-head"><p id="legal-dialog-title">ICosta Advocacia e Consultoria Jurídica</p><button type="button" data-dialog-close aria-label="Fechar">×</button></div>
     <div class="dialog-body" data-dialog-body></div>
   </dialog>
 
@@ -521,7 +526,9 @@
     <p class="dialog-kicker">Transparência</p>
     <h2>Aviso de privacidade</h2>
     <p>Este site não possui formulário de contato, área de cadastro ou ferramenta própria de analytics. Ao utilizar WhatsApp, e-mail, Instagram ou o mapa, você será direcionado a serviços externos, sujeitos às políticas de privacidade de seus respectivos provedores.</p>
-    <p>Os dados enviados voluntariamente pelos canais de contato podem ser utilizados pelo escritório para responder à solicitação e avaliar a possibilidade de atendimento. Evite compartilhar documentos ou informações sensíveis antes da confirmação do atendimento.</p>
+    <p>Os dados enviados voluntariamente pelos canais oficiais podem ser utilizados pelo escritório para responder à solicitação, verificar a possibilidade de atendimento, realizar agendamentos e cumprir obrigações legais ou profissionais aplicáveis.</p>
+    <p>As informações são mantidas somente pelo período necessário às finalidades informadas e às obrigações correspondentes. O acesso é limitado às pessoas e aos prestadores que precisem tratar esses dados, observados deveres de confidencialidade e segurança.</p>
+    <p>Você pode solicitar confirmação do tratamento, acesso, correção e demais direitos previstos na LGPD pelo e-mail <a href="mailto:contato@icosta.adv.br">contato@icosta.adv.br</a>. Evite compartilhar documentos ou informações sensíveis antes da confirmação do atendimento.</p>
     <p>Referência: <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer">Lei nº 13.709/2018 — LGPD ↗</a>.</p>
   </template>
 

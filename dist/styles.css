@@ -1,3 +1,6 @@
+@font-face { font-family: "DM Sans"; font-style: normal; font-weight: 400 600; font-display: swap; src: url("assets/fonts/dm-sans-latin.woff2") format("woff2"); }
+@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 300 500; font-display: swap; src: url("assets/fonts/newsreader-latin.woff2") format("woff2"); }
+
 :root {
   --deep: #061a15;
   --deep-2: #0b2f26;
