@@ -20,6 +20,18 @@ const imagesWithoutAlt = [...html.matchAll(/<img\b[^>]*>/g)]
 const buttonsWithoutType = [...html.matchAll(/<button\b[^>]*>/g)]
   .map((match) => match[0])
   .filter((button) => !/\stype="button"/.test(button));
+const marketingRiskPatterns = [
+  ['promessa de resultado', /resultado garantido|garantia de resultado|causa ganha/i],
+  ['promoção de preço', /consulta gratuita|desconto (?:em|nos) honorários|menor preço/i],
+  ['autoengrandecimento', /melhor escritório|número 1|o mais premiado/i],
+];
+const marketingRiskClaims = marketingRiskPatterns
+  .filter(([, pattern]) => pattern.test(html))
+  .map(([label]) => label);
+const primaryNavigation = html.match(/<nav[^>]+id="site-nav"[\s\S]*?<\/nav>/)?.[0] ?? '';
+const primaryNavigationTargets = [...primaryNavigation.matchAll(/<a[^>]+href="#([^"]+)"/g)]
+  .map((match) => match[1]);
+const expectedPrimaryNavigationTargets = ['escritorio', 'atuacao', 'mapa-juridico', 'icosta-lente', 'profissionais', 'contato'];
 const report = {
   title: /<title>[^<]+<\/title>/.test(html),
   h1Count: (html.match(/<h1/g) || []).length,
@@ -35,6 +47,8 @@ const report = {
   openingHours: /"opens": "08:00"/.test(html) && /"closes": "17:30"/.test(html),
   familyStory: /Mãe e filha, Isilda e Simone/.test(html),
   atlasInPrimaryNavigation: /<nav[^>]+id="site-nav"[\s\S]*?<a href="#mapa-juridico">ICosta Atlas<\/a>/.test(html),
+  primaryNavigationOrder: JSON.stringify(primaryNavigationTargets) === JSON.stringify(expectedPrimaryNavigationTargets),
+  directHeroContact: /class="button button-gold" href="#contato">Falar com o escritório/.test(html),
   inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
   headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
@@ -44,6 +58,10 @@ const report = {
   unsafeBlankLinkCount: unsafeBlankLinks.length,
   imagesWithoutAltCount: imagesWithoutAlt.length,
   buttonsWithoutTypeCount: buttonsWithoutType.length,
+  professionalIdentification: /Isilda Maria da Costa e Silva — OAB\/SP 56\.944/.test(html) && /Simone da Costa e Silva — OAB\/SP 259\.760/.test(html),
+  informationalAdvertisingNotice: /Publicidade de caráter exclusivamente informativo/.test(html),
+  noResultPromiseNotice: /Sem promessa de resultado/.test(html),
+  marketingRiskClaims,
 };
 
 console.log(JSON.stringify(report, null, 2));
@@ -62,6 +80,8 @@ if (
   !report.openingHours ||
   !report.familyStory ||
   !report.atlasInPrimaryNavigation ||
+  !report.primaryNavigationOrder ||
+  !report.directHeroContact ||
   !report.inertAccessPanel ||
   !report.headerBackdrop ||
   report.unresolvedPlaceholders ||
@@ -70,7 +90,11 @@ if (
   missingFragmentTargets.length ||
   unsafeBlankLinks.length ||
   imagesWithoutAlt.length ||
-  buttonsWithoutType.length
+  buttonsWithoutType.length ||
+  !report.professionalIdentification ||
+  !report.informationalAdvertisingNotice ||
+  !report.noResultPromiseNotice ||
+  marketingRiskClaims.length
 ) {
   process.exit(1);
 }
