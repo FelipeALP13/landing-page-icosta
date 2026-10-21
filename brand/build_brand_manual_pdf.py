@@ -470,6 +470,38 @@ def build():
         p("Manter os arquivos oficiais em uma pasta única, com controle de versão. Alterações no símbolo, no nome, na paleta ou na assinatura principal devem gerar uma nova versão deste manual."),
         Spacer(1, 8),
         Paragraph("ICosta Advocacia e Consultoria Jurídica  |  Versão 1.0", ParagraphStyle("Close", parent=ST["lead"], textColor=C["gold2"])),
+        PageBreak(),
+    ])
+
+    section(story, "13", "Demonstrações da marca", "Os mockups mostram como a identidade pode ser aplicada em papelaria, materiais de atendimento e brindes corporativos.")
+    stationery_mockup = proportional_image(BRAND / "mockups" / "aplicacoes-papelaria-e-brindes.png", 6.8 * inch)
+    story.extend([
+        heading("Papelaria e kit institucional"),
+        stationery_mockup,
+        Spacer(1, 8),
+        p("A composição usa o logotipo completo em superfícies amplas e o monograma em objetos pequenos. Verde profundo, papel quente e dourado discreto mantêm a mesma hierarquia do site e dos documentos institucionais."),
+        heading("Aplicação recomendada"),
+        bullet("Logotipo completo em pasta, papel timbrado e materiais de apresentação."),
+        bullet("Monograma em cartão, envelope, caneta, caderno e garrafa."),
+        bullet("Acabamento fosco, baixo relevo ou hot stamping dourado sem excesso de brilho."),
+        PageBreak(),
+    ])
+
+    story.extend([
+        p("APLICAÇÃO 02", "label"),
+        heading("Brindes corporativos", 1),
+        p("A versão reduzida cria unidade entre objetos de formatos diferentes sem comprometer a leitura.", "lead"),
+        proportional_image(BRAND / "mockups" / "brindes-corporativos.png", 6.8 * inch),
+        Spacer(1, 10),
+        standard_table(["Item", "Aplicação"], [
+            ("Garrafa térmica", "Monograma central em dourado, preferencialmente por gravação ou impressão resistente."),
+            ("Caneta", "Monograma reduzido próximo ao clipe, respeitando o tamanho mínimo possível."),
+            ("Caderno", "Monograma central em baixo relevo ou hot stamping discreto."),
+            ("Caneca", "Monograma frontal único, sem repetir o nome ao redor da peça."),
+            ("Porta-cartão", "Monograma pequeno e centralizado, com acabamento sem brilho excessivo."),
+        ], [1.55, 5.25]),
+        Spacer(1, 8),
+        p("Os mockups são referências visuais. Antes da produção, solicitar prova física para conferir contraste, escala, posição, fidelidade das cores e resistência do acabamento.", "small"),
     ])
 
     BrandDocTemplate(str(OUTPUT)).build(story)
