@@ -76,6 +76,70 @@ def logo_for_light_background():
     return stream
 
 
+def watermark_for_page(opacity=0.075):
+    image = Image.open(BRAND / "monogram.png").convert("RGBA")
+    alpha = image.getchannel("A").point(lambda value: round(value * opacity))
+    image.putalpha(alpha)
+    stream = BytesIO()
+    image.save(stream, format="PNG")
+    stream.seek(0)
+    return stream
+
+
+def place_picture_behind_text(inline_shape, x, y):
+    inline = inline_shape._inline
+    anchor = OxmlElement("wp:anchor")
+    for name, value in {
+        "distT": "0",
+        "distB": "0",
+        "distL": "0",
+        "distR": "0",
+        "simplePos": "0",
+        "relativeHeight": "0",
+        "behindDoc": "1",
+        "locked": "0",
+        "layoutInCell": "1",
+        "allowOverlap": "1",
+    }.items():
+        anchor.set(name, value)
+
+    simple_position = OxmlElement("wp:simplePos")
+    simple_position.set("x", "0")
+    simple_position.set("y", "0")
+    anchor.append(simple_position)
+
+    horizontal = OxmlElement("wp:positionH")
+    horizontal.set("relativeFrom", "page")
+    horizontal_offset = OxmlElement("wp:posOffset")
+    horizontal_offset.text = str(int(x))
+    horizontal.append(horizontal_offset)
+    anchor.append(horizontal)
+
+    vertical = OxmlElement("wp:positionV")
+    vertical.set("relativeFrom", "page")
+    vertical_offset = OxmlElement("wp:posOffset")
+    vertical_offset.text = str(int(y))
+    vertical.append(vertical_offset)
+    anchor.append(vertical)
+
+    extent = inline.find(qn("wp:extent"))
+    document_properties = inline.find(qn("wp:docPr"))
+    frame_properties = inline.find(qn("wp:cNvGraphicFramePr"))
+    graphic = inline.find(qn("a:graphic"))
+    for child in (extent, document_properties, frame_properties, graphic):
+        inline.remove(child)
+
+    anchor.append(extent)
+    effect_extent = OxmlElement("wp:effectExtent")
+    for side in ("l", "t", "r", "b"):
+        effect_extent.set(side, "0")
+    anchor.append(effect_extent)
+    anchor.append(OxmlElement("wp:wrapNone"))
+    anchor.extend((document_properties, frame_properties, graphic))
+
+    inline.getparent().replace(inline, anchor)
+
+
 def set_paragraph_top_border(paragraph, color, size=6, space=3):
     p_pr = paragraph._p.get_or_add_pPr()
     borders = p_pr.find(qn("w:pBdr"))
@@ -129,6 +193,13 @@ def build():
     logo_paragraph.paragraph_format.space_after = Pt(0)
     shape = logo_paragraph.add_run().add_picture(logo_for_light_background(), width=Mm(102))
     set_picture_alt_text(shape, "Logotipo ICosta", "ICosta Advocacia e Consultoria Jurídica")
+    watermark = logo_paragraph.add_run().add_picture(watermark_for_page(), width=Mm(115))
+    set_picture_alt_text(
+        watermark,
+        "Marca-d'água ICosta",
+        "Monograma institucional ICosta aplicado de forma suave ao fundo da página",
+    )
+    place_picture_behind_text(watermark, Mm(100), Mm(145))
 
     footer = section.footer
     clear_container(footer)
