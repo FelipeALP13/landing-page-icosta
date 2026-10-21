@@ -14,10 +14,11 @@
     const selectedTheme = theme === 'dark' ? 'dark' : 'light';
     const isDark = selectedTheme === 'dark';
     root.dataset.theme = selectedTheme;
+    root.style.colorScheme = selectedTheme;
     themeButton?.setAttribute('aria-pressed', String(isDark));
     themeButton?.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
     if (themeLabel) themeLabel.textContent = isDark ? 'Tema claro' : 'Tema escuro';
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#020e0b' : '#071c17');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#081713' : '#f7f3ea');
     if (persist) {
       try { localStorage.setItem('icosta-theme', selectedTheme); }
       catch { /* Theme remains active for this visit. */ }
@@ -27,6 +28,12 @@
   applyTheme(root.dataset.theme, { persist: false });
   themeButton?.addEventListener('click', () => {
     applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+  });
+
+  window.addEventListener('storage', (event) => {
+    if (event.key === 'icosta-theme' && (event.newValue === 'dark' || event.newValue === 'light')) {
+      applyTheme(event.newValue, { persist: false });
+    }
   });
 
   const trapFocus = (event, container, additional = []) => {

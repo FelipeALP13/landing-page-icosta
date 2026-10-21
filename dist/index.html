@@ -12,9 +12,14 @@
     (() => {
       try {
         const savedTheme = localStorage.getItem('icosta-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        const selectedTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme;
+        document.documentElement.dataset.theme = selectedTheme;
+        document.documentElement.style.colorScheme = selectedTheme;
       } catch {
-        document.documentElement.dataset.theme = 'light';
+        const fallbackTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = fallbackTheme;
+        document.documentElement.style.colorScheme = fallbackTheme;
       }
     })();
   </script>
