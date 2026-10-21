@@ -19,6 +19,8 @@ const report = {
   professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.webp/.test(html),
   socialImage: /property="og:image"/.test(html),
   twitterCard: /name="twitter:card"/.test(html),
+  openingHours: /"opens": "08:00"/.test(html) && /"closes": "17:30"/.test(html),
+  familyStory: /Mãe e filha, Isilda e Simone/.test(html),
   inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
   headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
@@ -38,6 +40,8 @@ if (
   !report.professionalPhoto ||
   !report.socialImage ||
   !report.twitterCard ||
+  !report.openingHours ||
+  !report.familyStory ||
   !report.inertAccessPanel ||
   !report.headerBackdrop ||
   report.unresolvedPlaceholders ||

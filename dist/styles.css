@@ -344,7 +344,8 @@ button { color: inherit; font: inherit; }
 .contact-detail:hover { color: var(--gold); }
 .contact-detail span { color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .1em; }
 .contact-detail p { margin: 0; }
-.contact-address p { line-height: 1.65; }
+.contact-address p, .contact-hours p { line-height: 1.65; }
+.contact-hours:hover { color: inherit; }
 .contact-disclaimer { margin: 25px 0 0; color: rgba(255,255,255,.36); font-size: .6rem; }
 
 .site-footer { padding: 82px 0 30px; background: var(--deep); color: var(--white); }
