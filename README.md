@@ -1,6 +1,6 @@
-# ICosta Advocacia
+# ICosta Advocacia e Consultoria Jurídica
 
-Landing page institucional da ICosta Advocacia, com conteúdo informativo sobre as áreas de atuação, as profissionais e os canais oficiais do escritório.
+Landing page institucional da ICosta Advocacia e Consultoria Jurídica, com conteúdo informativo sobre as áreas de atuação, as profissionais e os canais oficiais do escritório.
 
 ## Áreas de atuação
 

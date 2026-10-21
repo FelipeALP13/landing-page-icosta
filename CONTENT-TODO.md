@@ -5,6 +5,9 @@ Dados oficiais ainda pendentes para futuras atualizações:
 - Mini-biografias das profissionais
 - Foto profissional da Dra. Simone da Costa e Silva
 - Confirmação do ano de fundação e histórico do escritório
+- Confirmação se “ICosta Advocacia e Consultoria Jurídica” é assinatura de marca ou nome empresarial registrado
+- Registro da sociedade de advocacia na OAB/SP, caso exista
+- Área geográfica atendida e disponibilidade de atendimento on-line
 - Domínio definitivo e acesso ao provedor/DNS
 
 WhatsApp, e-mail, endereço, horário de atendimento, profissionais, inscrições na OAB, relação familiar entre as advogadas, foto da Dra. Isilda e áreas de atuação já foram atualizados em `dist/index.html`.
