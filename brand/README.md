@@ -24,5 +24,7 @@ Esta pasta reúne o manual institucional da ICosta Advocacia e os arquivos usado
 - `convert_assets.mjs`: converte os SVGs e a fotografia usados no documento.
 - `logo-primary.png`, `monogram.png` e `isilda-maria-da-costa-e-silva.png`: imagens derivadas dos arquivos oficiais localizados em `dist/assets`.
 - `mockups/`: demonstrações fotográficas das aplicações da identidade.
+- `documentos/folha-timbrada-icosta.docx`: folha timbrada editável em Word com a identidade atual.
+- `documentos/build_letterhead.py`: gera novamente a folha timbrada institucional.
 
 Alterações no símbolo, nome, paleta ou assinatura principal devem resultar em uma nova versão do manual.
