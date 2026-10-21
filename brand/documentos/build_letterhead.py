@@ -2,7 +2,7 @@ from io import BytesIO
 from pathlib import Path
 
 from docx import Document
-from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_TAB_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Mm, Pt, RGBColor
@@ -204,10 +204,13 @@ def build():
     footer = section.footer
     clear_container(footer)
     page = footer.add_paragraph()
-    page.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    page.alignment = WD_ALIGN_PARAGRAPH.LEFT
     page.paragraph_format.left_indent = Mm(-15)
     page.paragraph_format.right_indent = Mm(-15)
     page.paragraph_format.space_after = Pt(1)
+    page.paragraph_format.tab_stops.add_tab_stop(Mm(175), WD_TAB_ALIGNMENT.RIGHT)
+    set_run_font(page.add_run("Registro da sociedade: OAB/SP nº 8.870"), "Arial", 6.5, INK)
+    page.add_run("\t")
     set_run_font(page.add_run("página "), "Arial", 6.5, INK)
     add_field(page, "PAGE")
     set_run_font(page.add_run(" de "), "Arial", 6.5, INK)
@@ -221,13 +224,13 @@ def build():
     info.paragraph_format.space_after = Pt(0)
     set_paragraph_top_border(info, GOLD, size=6, space=3)
     set_run_font(
-        info.add_run("Av. Alfredo Ignácio Nogueira Penido, 335, sala 104, Jd. Aquarius, São José dos Campos/SP, CEP 12246-000"),
+        info.add_run("Av. Alfredo Ignácio Nogueira Penido, 335, sala 104 · São José dos Campos/SP · CEP 12246-000"),
         "Arial",
         6.5,
         INK,
     )
     set_run_font(info.add_run("  |  "), "Arial", 6.5, GOLD)
-    set_run_font(info.add_run("(12) 3922-9758 / 98103-9999"), "Arial", 6.5, INK)
+    set_run_font(info.add_run("Tel. (12) 3922-9758 · WhatsApp (12) 98103-9999"), "Arial", 6.5, INK)
     set_run_font(info.add_run("  |  "), "Arial", 6.5, GOLD)
     set_run_font(info.add_run("contato@icosta.adv.br"), "Arial", 6.5, INK)
 

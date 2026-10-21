@@ -8,12 +8,12 @@ Esta análise é uma revisão técnica e editorial baseada nas regras públicas 
 
 ## Pontos verificados
 
-- Identificação das profissionais e respectivas inscrições na OAB/SP.
+- Identificação da sociedade sob registro OAB/SP nº 8.870 e das profissionais com suas respectivas inscrições.
 - Caráter informativo das áreas de atuação, do ICosta Atlas e do ICosta Lente.
 - Avisos de que o conteúdo não constitui consulta jurídica e de que resultados dependem do caso concreto.
 - Um único contato principal no cabeçalho, sem pressão, promessa ou captação indevida.
 - Ausência de preços, gratuidade promocional, comparações, rankings, garantias e exposição de casos concretos.
-- Endereço, CEP, horário de atendimento e canais de contato consistentes.
+- Endereço, CEP, horário de atendimento, telefone do escritório e demais canais de contato consistentes.
 - Aviso de privacidade com finalidades, retenção, acesso restrito e canal para exercício de direitos previstos na LGPD.
 - Estrutura de títulos, descrição, dados estruturados, indexação, compartilhamento social e SEO local.
 - Navegação por teclado, foco visível, painéis identificados e diálogos com rótulos acessíveis.
@@ -37,7 +37,7 @@ Os itens abaixo não impedem o funcionamento do site, mas aumentariam confiança
 - Mini-biografias das profissionais.
 - Foto profissional da Dra. Simone da Costa e Silva.
 - Confirmação do histórico: início da trajetória em 1982 versus abertura da sociedade em 2005.
-- Confirmação do nome empresarial e do eventual registro da sociedade na OAB/SP.
+- Confirmação se “ICosta Advocacia e Consultoria Jurídica” corresponde ao nome empresarial registrado ou apenas à assinatura de marca.
 - Abrangência geográfica e disponibilidade de atendimento on-line.
 - Link direto do perfil oficial no Google Maps/Google Business.
 - Configuração da hospedagem do domínio `icosta.adv.br`, que ainda não foi publicada por este projeto.

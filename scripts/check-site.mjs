@@ -72,6 +72,8 @@ const report = {
   imagesWithoutAltCount: imagesWithoutAlt.length,
   buttonsWithoutTypeCount: buttonsWithoutType.length,
   professionalIdentification: /Isilda Maria da Costa e Silva — OAB\/SP 56\.944/.test(html) && /Simone da Costa e Silva — OAB\/SP 259\.760/.test(html),
+  officeRegistration: /Sociedade registrada na OAB\/SP sob nº 8\.870/.test(html) && /"propertyID": "OAB\/SP"[\s\S]*?"value": "8\.870"/.test(html),
+  officeTelephone: /"telephone": "\+55 12 3922-9758"/.test(html) && /href="tel:\+551239229758"/.test(html),
   informationalAdvertisingNotice: /Publicidade de caráter exclusivamente informativo/.test(html),
   noResultPromiseNotice: /Sem promessa de resultado/.test(html),
   privacyRightsNotice: /solicitar confirmação do tratamento, acesso, correção/.test(html),
@@ -115,6 +117,8 @@ if (
   imagesWithoutAlt.length ||
   buttonsWithoutType.length ||
   !report.professionalIdentification ||
+  !report.officeRegistration ||
+  !report.officeTelephone ||
   !report.informationalAdvertisingNotice ||
   !report.noResultPromiseNotice ||
   !report.privacyRightsNotice ||
