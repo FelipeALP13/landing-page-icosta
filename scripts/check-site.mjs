@@ -32,6 +32,8 @@ const primaryNavigation = html.match(/<nav[^>]+id="site-nav"[\s\S]*?<\/nav>/)?.[
 const primaryNavigationTargets = [...primaryNavigation.matchAll(/<a[^>]+href="#([^"]+)"/g)]
   .map((match) => match[1]);
 const expectedPrimaryNavigationTargets = ['escritorio', 'atuacao', 'mapa-juridico', 'icosta-lente', 'profissionais', 'contato'];
+const topOfPage = html.match(/<header[\s\S]*?<\/section>/)?.[0] ?? '';
+const topContactLinkCount = (topOfPage.match(/href="#contato"/g) || []).length;
 const report = {
   title: /<title>[^<]+<\/title>/.test(html),
   h1Count: (html.match(/<h1/g) || []).length,
@@ -48,7 +50,9 @@ const report = {
   familyStory: /Mãe e filha, Isilda e Simone/.test(html),
   atlasInPrimaryNavigation: /<nav[^>]+id="site-nav"[\s\S]*?<a href="#mapa-juridico">ICosta Atlas<\/a>/.test(html),
   primaryNavigationOrder: JSON.stringify(primaryNavigationTargets) === JSON.stringify(expectedPrimaryNavigationTargets),
-  directHeroContact: /class="button button-gold" href="#contato">Falar com o escritório/.test(html),
+  singleTopContactAction: topContactLinkCount === 1,
+  heroPrimaryPractice: /class="button button-gold" href="#atuacao">Conheça nossa atuação/.test(html),
+  heroSecondaryAtlas: /class="button-quiet" href="#mapa-juridico">Explore o ICosta Atlas/.test(html),
   inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
   headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
@@ -81,7 +85,9 @@ if (
   !report.familyStory ||
   !report.atlasInPrimaryNavigation ||
   !report.primaryNavigationOrder ||
-  !report.directHeroContact ||
+  !report.singleTopContactAction ||
+  !report.heroPrimaryPractice ||
+  !report.heroSecondaryAtlas ||
   !report.inertAccessPanel ||
   !report.headerBackdrop ||
   report.unresolvedPlaceholders ||
