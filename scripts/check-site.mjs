@@ -16,7 +16,11 @@ const report = {
   heroAreaCount: (html.match(/data-hero-area/g) || []).length,
   atlasAreaCount: (html.match(/data-atlas-area=/g) || []).length,
   lensAreaCount: (html.match(/data-lens-document=/g) || []).length,
-  professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.png/.test(html),
+  professionalPhoto: /assets\/isilda-maria-da-costa-e-silva\.webp/.test(html),
+  socialImage: /property="og:image"/.test(html),
+  twitterCard: /name="twitter:card"/.test(html),
+  inertAccessPanel: /data-access-panel[^>]*\sinert(?:\s|>)/.test(html),
+  headerBackdrop: /class="header-backdrop"/.test(html),
   unresolvedPlaceholders: /Em atualização|serão inseridos|practice-boundary/.test(html),
   missingLocalAssets: missing,
 };
@@ -32,6 +36,10 @@ if (
   report.atlasAreaCount !== 6 ||
   report.lensAreaCount !== 6 ||
   !report.professionalPhoto ||
+  !report.socialImage ||
+  !report.twitterCard ||
+  !report.inertAccessPanel ||
+  !report.headerBackdrop ||
   report.unresolvedPlaceholders ||
   missing.length
 ) {

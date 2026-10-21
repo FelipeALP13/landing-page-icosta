@@ -11,6 +11,16 @@
   <meta property="og:title" content="ICosta Advocacia">
   <meta property="og:description" content="Direito com contexto. Estratégia com clareza.">
   <meta property="og:url" content="https://icosta-advocacia.saltytern4.chatgpt.site/">
+  <meta property="og:site_name" content="ICosta Advocacia">
+  <meta property="og:image" content="https://icosta-advocacia.saltytern4.chatgpt.site/assets/hero-architecture-v2.jpg">
+  <meta property="og:image:width" content="1680">
+  <meta property="og:image:height" content="936">
+  <meta property="og:image:alt" content="Arquitetura contemporânea em tons verdes, identidade visual da ICosta Advocacia">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ICosta Advocacia">
+  <meta name="twitter:description" content="Direito com contexto. Estratégia com clareza.">
+  <meta name="twitter:image" content="https://icosta-advocacia.saltytern4.chatgpt.site/assets/hero-architecture-v2.jpg">
+  <meta name="twitter:image:alt" content="Arquitetura contemporânea em tons verdes, identidade visual da ICosta Advocacia">
   <link rel="canonical" href="https://icosta-advocacia.saltytern4.chatgpt.site/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +54,7 @@
     },
     "knowsAbout": ["Direito Civil", "Direito Trabalhista", "Direito Empresarial", "Direito Condominial", "Direito Imobiliário", "Direito de Família"],
     "employee": [
-      {"@type": "Person", "name": "Isilda Maria da Costa e Silva", "image": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/isilda-maria-da-costa-e-silva.png"},
+      {"@type": "Person", "name": "Isilda Maria da Costa e Silva", "image": "https://icosta-advocacia.saltytern4.chatgpt.site/assets/isilda-maria-da-costa-e-silva.webp"},
       {"@type": "Person", "name": "Simone da Costa e Silva"}
     ]
   }
@@ -55,19 +65,20 @@
   <div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
 
   <header class="site-header" data-header>
+    <div class="header-backdrop" aria-hidden="true"></div>
     <div class="shell header-inner">
       <a class="brand" href="#inicio" aria-label="ICosta Advocacia — início">
         <img src="assets/logo.svg" alt="ICosta Advocacia" width="210" height="58">
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-button>
-        <span></span><span></span><span class="sr-only">Abrir menu</span>
+        <span></span><span></span><span class="sr-only" data-menu-label>Abrir menu</span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Navegação principal" data-menu>
         <a href="#escritorio">O escritório</a>
         <a href="#atuacao">Atuação</a>
         <a href="#profissionais">Profissionais</a>
         <a href="#icosta-lente">ICosta Lente</a>
-        <button class="nav-access" type="button" data-access-open aria-label="Abrir recursos de acessibilidade">
+        <button class="nav-access" type="button" data-access-open aria-label="Abrir recursos de acessibilidade" aria-controls="access-panel" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2"/><path d="M4 8.5h16M12 7v13M7.5 20l4.5-7 4.5 7"/></svg>
           Acessibilidade
         </button>
@@ -393,7 +404,7 @@
         </div>
         <div class="professionals-grid">
           <article class="professional-card reveal">
-            <img class="professional-photo" src="assets/isilda-maria-da-costa-e-silva.png" alt="Dra. Isilda Maria da Costa e Silva" width="1256" height="1256" loading="lazy">
+            <img class="professional-photo" src="assets/isilda-maria-da-costa-e-silva.webp" alt="Dra. Isilda Maria da Costa e Silva" width="1254" height="1254" loading="lazy" decoding="async">
             <div><p>Advogada</p><h3>Isilda Maria<br>da Costa e Silva</h3><span>OAB/SP 56.944</span></div>
           </article>
           <article class="professional-card reveal">
@@ -463,12 +474,12 @@
     </div>
   </footer>
 
-  <button class="access-fab" type="button" data-access-open aria-label="Abrir recursos de acessibilidade">
+  <button class="access-fab" type="button" data-access-open aria-label="Abrir recursos de acessibilidade" aria-controls="access-panel" aria-expanded="false">
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="2.2"/><path d="M4 8.5h16M12 7v13M7.5 20l4.5-7 4.5 7"/></svg>
     <span>Acessibilidade</span>
   </button>
 
-  <aside class="access-panel" data-access-panel aria-labelledby="access-title" aria-hidden="true">
+  <aside class="access-panel" id="access-panel" data-access-panel aria-labelledby="access-title" aria-hidden="true" inert>
     <div class="access-head"><h2 id="access-title">Acessibilidade</h2><button type="button" data-access-close aria-label="Fechar recursos de acessibilidade">×</button></div>
     <p>Ajuste a visualização conforme sua preferência.</p>
     <div class="access-controls">

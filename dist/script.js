@@ -3,22 +3,39 @@
   const root = document.documentElement;
   const header = document.querySelector('[data-header]');
   const menuButton = document.querySelector('[data-menu-button]');
+  const menuLabel = document.querySelector('[data-menu-label]');
   const menu = document.querySelector('[data-menu]');
   const progress = document.querySelector('[data-progress]');
+  const mobileMenuQuery = window.matchMedia('(max-width: 1050px)');
 
-  const closeMenu = () => {
-    menuButton?.setAttribute('aria-expanded', 'false');
-    menu?.classList.remove('open');
-    body.classList.remove('menu-open');
+  const setMenuState = (open, { restoreFocus = false } = {}) => {
+    const active = mobileMenuQuery.matches && open;
+    menuButton?.setAttribute('aria-expanded', String(active));
+    if (menuLabel) menuLabel.textContent = active ? 'Fechar menu' : 'Abrir menu';
+    menu?.classList.toggle('open', active);
+    body.classList.toggle('menu-open', active);
+
+    if (menu) {
+      menu.inert = mobileMenuQuery.matches && !active;
+      if (mobileMenuQuery.matches) menu.setAttribute('aria-hidden', String(!active));
+      else menu.removeAttribute('aria-hidden');
+    }
+
+    if (active) requestAnimationFrame(() => menu?.querySelector('a, button')?.focus());
+    else if (restoreFocus) menuButton?.focus();
   };
+
+  const closeMenu = (options) => setMenuState(false, options);
 
   menuButton?.addEventListener('click', () => {
     const open = menuButton.getAttribute('aria-expanded') === 'true';
-    menuButton.setAttribute('aria-expanded', String(!open));
-    menu?.classList.toggle('open', !open);
-    body.classList.toggle('menu-open', !open);
+    setMenuState(!open, { restoreFocus: open });
   });
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  const syncMenuMode = () => setMenuState(false);
+  if (mobileMenuQuery.addEventListener) mobileMenuQuery.addEventListener('change', syncMenuMode);
+  else mobileMenuQuery.addListener(syncMenuMode);
+  syncMenuMode();
 
   const updateScroll = () => {
     header?.classList.toggle('scrolled', window.scrollY > 28);
@@ -421,13 +438,18 @@
   };
 
   const accessPanel = document.querySelector('[data-access-panel]');
+  const accessButtons = Array.from(document.querySelectorAll('[data-access-open]'));
   const contrastButton = document.querySelector('[data-contrast]');
   const motionButton = document.querySelector('[data-motion]');
   let accessTrigger = null;
 
   const syncAccessButtons = () => {
-    contrastButton?.classList.toggle('active', body.classList.contains('high-contrast'));
-    motionButton?.classList.toggle('active', body.classList.contains('reduce-motion'));
+    const highContrast = body.classList.contains('high-contrast');
+    const reducedMotion = body.classList.contains('reduce-motion');
+    contrastButton?.classList.toggle('active', highContrast);
+    contrastButton?.setAttribute('aria-pressed', String(highContrast));
+    motionButton?.classList.toggle('active', reducedMotion);
+    motionButton?.setAttribute('aria-pressed', String(reducedMotion));
   };
 
   const applyPreferences = (preferences) => {
@@ -441,18 +463,25 @@
 
   const openAccess = (trigger) => {
     accessTrigger = trigger;
+    closeMenu();
+    if (accessPanel) accessPanel.inert = false;
     accessPanel?.classList.add('open');
     accessPanel?.setAttribute('aria-hidden', 'false');
+    accessButtons.forEach((button) => button.setAttribute('aria-expanded', String(button === trigger)));
     body.classList.add('panel-open');
     accessPanel?.querySelector('button')?.focus();
   };
   const closeAccess = () => {
+    if (!accessPanel?.classList.contains('open')) return;
     accessPanel?.classList.remove('open');
     accessPanel?.setAttribute('aria-hidden', 'true');
+    accessPanel.inert = true;
+    accessButtons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
     body.classList.remove('panel-open');
-    accessTrigger?.focus();
+    if (accessTrigger?.closest('[inert]')) menuButton?.focus();
+    else accessTrigger?.focus();
   };
-  document.querySelectorAll('[data-access-open]').forEach((button) => button.addEventListener('click', () => openAccess(button)));
+  accessButtons.forEach((button) => button.addEventListener('click', () => openAccess(button)));
   document.querySelector('[data-access-close]')?.addEventListener('click', closeAccess);
 
   document.querySelectorAll('[data-font]').forEach((button) => {
@@ -509,7 +538,7 @@
 
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
-    closeMenu();
+    closeMenu({ restoreFocus: true });
     closeAccess();
     closeDialog();
   });
