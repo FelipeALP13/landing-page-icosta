@@ -1,0 +1,4 @@
+Contact: mailto:contato@icosta.adv.br
+Expires: 2027-10-24T23:59:59Z
+Preferred-Languages: pt-BR
+Canonical: https://icosta-advocacia.saltytern4.chatgpt.site/.well-known/security.txt

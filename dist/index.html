@@ -2,27 +2,15 @@
 <html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; media-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'none'; upgrade-insecure-requests">
+  <meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ICosta Advocacia | Advocacia em São José dos Campos</title>
   <meta name="description" content="Advocacia e consultoria jurídica em São José dos Campos, com atuação em Direito Civil, Trabalhista, Empresarial, Condominial, Imobiliário e de Família.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#071c17">
-  <script>
-    (() => {
-      try {
-        const savedTheme = localStorage.getItem('icosta-theme');
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        const selectedTheme = savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme;
-        document.documentElement.dataset.theme = selectedTheme;
-        document.documentElement.style.colorScheme = selectedTheme;
-      } catch {
-        const fallbackTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.dataset.theme = fallbackTheme;
-        document.documentElement.style.colorScheme = fallbackTheme;
-      }
-    })();
-  </script>
+  <script src="theme-init.js"></script>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:title" content="ICosta Advocacia e Consultoria Jurídica | São José dos Campos">
@@ -180,7 +168,7 @@
           <article><span>01</span><h3>Contexto</h3><p>Entender a história inteira antes de olhar apenas para o problema jurídico.</p></article>
           <article><span>02</span><h3>Clareza</h3><p>Traduzir possibilidades e riscos para que cada decisão seja consciente.</p></article>
           <article><span>03</span><h3>Presença</h3><p>Manter uma comunicação próxima durante toda a condução do trabalho.</p></article>
-          <div class="panel-mark" aria-hidden="true"><span>I</span><b>C</b></div>
+          <div class="panel-mark" aria-hidden="true"><img src="assets/monogram-official.png" alt="" width="900" height="900"></div>
         </div>
       </div>
     </section>

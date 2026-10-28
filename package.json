@@ -1,0 +1,9 @@
+{
+  "name": "icosta-advocacia-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-worker.mjs",
+    "check": "node scripts/check-site.mjs && node --check dist/theme-init.js && node --check dist/script.js && node scripts/build-worker.mjs && node scripts/validate-worker.mjs"
+  }
+}

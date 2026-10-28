@@ -5,6 +5,10 @@ const root = path.resolve('dist');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
 const script = fs.readFileSync(path.join(root, 'script.js'), 'utf8');
+const themeScript = fs.readFileSync(path.join(root, 'theme-init.js'), 'utf8');
+const headers = fs.readFileSync(path.join(root, '_headers'), 'utf8');
+const securityTxt = fs.readFileSync(path.join(root, '.well-known', 'security.txt'), 'utf8');
+const hosting = JSON.parse(fs.readFileSync(path.resolve('.openai', 'hosting.json'), 'utf8'));
 const references = [...html.matchAll(/(?:src|href)="([^"#]+)"/g)]
   .map((match) => match[1])
   .filter((reference) => !/^(?:https?:|mailto:|tel:)/.test(reference));
@@ -32,6 +36,17 @@ const marketingRiskPatterns = [
 const marketingRiskClaims = marketingRiskPatterns
   .filter(([, pattern]) => pattern.test(html))
   .map(([label]) => label);
+const executableInlineScripts = [...html.matchAll(/<script\b(?![^>]*type="application\/ld\+json")[^>]*>([\s\S]*?)<\/script>/g)]
+  .filter((match) => match[1].trim());
+const dangerousDomPatterns = [
+  /\.innerHTML\s*=/,
+  /\.outerHTML\s*=/,
+  /insertAdjacentHTML\s*\(/,
+  /\beval\s*\(/,
+  /new\s+Function\s*\(/,
+  /document\.write\s*\(/,
+];
+const dangerousDomSinks = dangerousDomPatterns.filter((pattern) => pattern.test(`${script}\n${themeScript}`));
 const primaryNavigation = html.match(/<nav[^>]+id="site-nav"[\s\S]*?<\/nav>/)?.[0] ?? '';
 const primaryNavigationTargets = [...primaryNavigation.matchAll(/<a[^>]+href="#([^"]+)"/g)]
   .map((match) => match[1]);
@@ -77,6 +92,36 @@ const report = {
   officeRegistration: /Sociedade registrada na OAB\/SP sob nº 8\.870/.test(html) && /"propertyID": "OAB\/SP"[\s\S]*?"value": "8\.870"/.test(html),
   officeTelephone: /"telephone": "\+55 12 3922-9758"/.test(html) && /href="tel:\+551239229758"/.test(html),
   colorThemes: /data-theme-toggle/.test(html) && /html\[data-theme="dark"\]/.test(css) && /localStorage\.setItem\('icosta-theme'/.test(script),
+  themeWideCoverage: [
+    'practice',
+    'perspective',
+    'atlas',
+    'lens-insight',
+    'contact',
+    'site-footer',
+  ].every((section) => css.includes(`html[data-theme="light"] .${section}`)),
+  strictContentSecurityPolicy: [
+    "Content-Security-Policy: default-src 'self'",
+    "base-uri 'none'",
+    "script-src 'self'",
+    "object-src 'none'",
+    "frame-ancestors 'none'",
+    "form-action 'none'",
+  ].every((directive) => headers.includes(directive)),
+  securityHeaders: [
+    'Referrer-Policy: no-referrer',
+    'X-Content-Type-Options: nosniff',
+    'X-Frame-Options: DENY',
+    'Cross-Origin-Opener-Policy: same-origin',
+    'Cross-Origin-Resource-Policy: same-origin',
+    'Permissions-Policy:',
+    'Strict-Transport-Security:',
+  ].every((header) => headers.includes(header)),
+  cspFallbackMeta: /http-equiv="Content-Security-Policy"/.test(html) && /script-src 'self'/.test(html),
+  noExecutableInlineScripts: executableInlineScripts.length === 0,
+  dangerousDomSinkCount: dangerousDomSinks.length,
+  securityContact: /Contact: mailto:contato@icosta\.adv\.br/.test(securityTxt) && /Expires: 2027-10-24T23:59:59Z/.test(securityTxt),
+  workerHosting: hosting.project_id === 'appgprj_6ad697dd632c81918ac4ba54163a255c' && !('static' in hosting),
   informationalAdvertisingNotice: /Publicidade de caráter exclusivamente informativo/.test(html),
   noResultPromiseNotice: /Sem promessa de resultado/.test(html),
   privacyRightsNotice: /solicitar confirmação do tratamento, acesso, correção/.test(html),
@@ -123,6 +168,14 @@ if (
   !report.officeRegistration ||
   !report.officeTelephone ||
   !report.colorThemes ||
+  !report.themeWideCoverage ||
+  !report.strictContentSecurityPolicy ||
+  !report.securityHeaders ||
+  !report.cspFallbackMeta ||
+  !report.noExecutableInlineScripts ||
+  report.dangerousDomSinkCount !== 0 ||
+  !report.securityContact ||
+  !report.workerHosting ||
   !report.informationalAdvertisingNotice ||
   !report.noResultPromiseNotice ||
   !report.privacyRightsNotice ||

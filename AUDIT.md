@@ -1,4 +1,4 @@
-# Auditoria do site — 21 de outubro de 2026
+# Auditoria do site — 24 de outubro de 2026
 
 ## Resultado
 
@@ -19,6 +19,9 @@ Esta análise é uma revisão técnica e editorial baseada nas regras públicas 
 - Navegação por teclado, foco visível, painéis identificados e diálogos com rótulos acessíveis.
 - Layout responsivo em tela ampla e celular.
 - Recursos visuais e fontes servidos pelo próprio site, reduzindo dependências externas.
+- Ausência de formulários, banco de dados, autenticação própria, dependências de terceiros e conteúdo inserido pelo visitante, mantendo pequena a superfície de ataque.
+- JavaScript sem `eval`, `innerHTML`, `document.write` ou outros pontos comuns de injeção de código.
+- Links externos abertos com isolamento `noopener noreferrer`.
 
 ## Melhorias aplicadas nesta auditoria
 
@@ -29,6 +32,11 @@ Esta análise é uma revisão técnica e editorial baseada nas regras públicas 
 - Navegação móvel e janelas laterais receberam contenção de foco.
 - Aviso de privacidade foi ampliado com finalidade, retenção e direitos do titular.
 - Verificação automatizada passou a detectar mais alegações de risco na publicidade jurídica.
+- JavaScript inicial do tema foi movido para arquivo externo, permitindo bloquear scripts inline com CSP.
+- Política de Segurança de Conteúdo restrita a recursos do próprio site, sem `unsafe-inline` ou `unsafe-eval`.
+- Entrega migrada de hospedagem estática para um Worker mínimo que aplica cabeçalhos contra clickjacking, MIME sniffing, vazamento de referência e acesso a recursos sensíveis do navegador em todas as respostas.
+- Canal padronizado `.well-known/security.txt` criado para comunicação responsável de vulnerabilidades.
+- Verificação automatizada ampliada para barrar regressões de CSP, cabeçalhos, scripts inline e pontos de injeção no DOM.
 
 ## Informações ainda pendentes
 
@@ -40,7 +48,13 @@ Os itens abaixo não impedem o funcionamento do site, mas aumentariam confiança
 - Confirmação se “ICosta Advocacia e Consultoria Jurídica” corresponde ao nome empresarial registrado ou apenas à assinatura de marca.
 - Abrangência geográfica e disponibilidade de atendimento on-line.
 - Link direto do perfil oficial no Google Maps/Google Business.
-- Configuração da hospedagem do domínio `icosta.adv.br`, que ainda não foi publicada por este projeto.
+- Vinculação do domínio `icosta.adv.br` ao projeto Sites e correção do DNS/hospedagem; em 24/10/2026 o domínio ainda respondia HTTP 503 e não havia domínio personalizado cadastrado.
+- Decisão e autorização para tornar o site público; o projeto está em acesso personalizado, visível apenas ao proprietário.
+- Nova confirmação dos cabeçalhos de segurança depois de qualquer mudança de plataforma ou domínio.
+
+## Risco residual
+
+Nenhum site pode ser declarado “totalmente seguro”. A versão atual foi endurecida para o seu perfil estático e não identificamos vulnerabilidades exploráveis no código revisado. A segurança final também depende da plataforma de hospedagem, do DNS, das contas administrativas e da aplicação efetiva dos cabeçalhos pelo servidor. Recomenda-se manter autenticação multifator nas contas de domínio e hospedagem, usar acesso mínimo e refazer a varredura após qualquer integração, formulário, analytics ou código de terceiros.
 
 ## Referências oficiais consultadas
 

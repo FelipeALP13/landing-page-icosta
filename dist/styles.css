@@ -9,16 +9,16 @@
   --gold: #d9bb72;
   --gold-2: #9b6f24;
   --gold-hover: #ead394;
-  --paper: #f7f3ea;
-  --paper-2: #ede5d8;
-  --surface: #fffaf1;
-  --surface-raised: #fffdf7;
-  --surface-soft: #f1e9dc;
-  --ink: #11261f;
-  --muted: #58655f;
+  --paper: #f8f5ee;
+  --paper-2: #edf1eb;
+  --surface: #fffdf8;
+  --surface-raised: #fffefb;
+  --surface-soft: #e9eee8;
+  --ink: #10251e;
+  --muted: #52635c;
   --white: #fffdf7;
-  --line: rgba(17,38,31,.17);
-  --shadow: 0 24px 70px rgba(25,44,36,.10);
+  --line: rgba(16,37,30,.16);
+  --shadow: 0 24px 70px rgba(25,44,36,.11);
   --shadow-strong: 0 38px 100px rgba(15,31,25,.18);
   --shell: min(1240px, calc(100vw - 72px));
   --serif: "Newsreader", Georgia, serif;
@@ -27,22 +27,22 @@
 }
 
 html[data-theme="dark"] {
-  --deep: #020d0a;
-  --deep-2: #061d17;
-  --green: #0a3026;
-  --green-soft: #145042;
-  --gold: #e0c27a;
-  --gold-2: #e0bd70;
-  --gold-hover: #f0d99a;
-  --paper: #081713;
-  --paper-2: #0d241d;
-  --surface: #0f211b;
-  --surface-raised: #142b23;
-  --surface-soft: #10271f;
+  --deep: #071b16;
+  --deep-2: #0b3026;
+  --green: #0f3d31;
+  --green-soft: #1b5749;
+  --gold: #d9bb72;
+  --gold-2: #d9bb72;
+  --gold-hover: #ead394;
+  --paper: #071b16;
+  --paper-2: #0b3026;
+  --surface: #0f3027;
+  --surface-raised: #143d32;
+  --surface-soft: #0d342a;
   --ink: #f5f0e7;
-  --muted: #b3beb8;
+  --muted: #b9c4be;
   --white: #fffdf7;
-  --line: rgba(236,229,214,.16);
+  --line: rgba(217,187,114,.22);
   --shadow: 0 24px 80px rgba(0,0,0,.28);
   --shadow-strong: 0 42px 110px rgba(0,0,0,.46);
   color-scheme: dark;
@@ -147,10 +147,8 @@ html[data-theme="dark"] .theme-icon-sun { display: block; }
 .about-panels article > span { color: var(--gold-2); font-family: var(--serif); font-size: .85rem; }
 .about-panels h3 { margin: auto 0 10px; font-family: var(--serif); font-weight: 400; font-size: 1.85rem; }
 .about-panels p { margin: 0; color: var(--muted); font-size: .8rem; }
-.panel-mark { position: relative; min-height: 260px; display: grid; place-items: center; overflow: hidden; background: var(--green); color: var(--gold); font-family: var(--serif); font-size: 5rem; }
-.panel-mark::before { content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(213,182,108,.3); border-radius: 50%; }
-.panel-mark span { position: absolute; left: 31%; }
-.panel-mark b { position: absolute; left: 48%; font-weight: 300; }
+.panel-mark { position: relative; min-height: 260px; display: grid; place-items: center; overflow: hidden; background: var(--green); }
+.panel-mark img { width: min(76%, 190px); height: auto; filter: drop-shadow(0 14px 30px rgba(2,13,10,.2)); }
 
 .practice { position: relative; overflow: hidden; background: var(--deep); color: var(--white); }
 .practice-glow { position: absolute; width: 680px; height: 680px; right: -200px; top: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(28,96,76,.45), transparent 68%); }
@@ -439,7 +437,191 @@ html[data-theme="dark"] .theme-icon-sun { display: block; }
 .dialog-body p { color: var(--muted); }
 .dialog-body a { color: var(--green); font-weight: 600; }
 
+html[data-theme="light"] .ticker {
+  color: #79561d;
+  background: #efe6d7;
+  border-block-color: rgba(155,111,36,.28);
+}
+
+html[data-theme="light"] .practice,
+html[data-theme="light"] .perspective,
+html[data-theme="light"] .atlas {
+  color: var(--ink);
+  background: radial-gradient(circle at 88% 8%, rgba(217,187,114,.12), transparent 28rem), linear-gradient(145deg, #f0f3ee, #e8ede7 72%);
+}
+html[data-theme="light"] .practice-glow {
+  background: radial-gradient(circle, rgba(217,187,114,.2), transparent 68%);
+}
+html[data-theme="light"] .section-index-light,
+html[data-theme="light"] .practice-intro > p,
+html[data-theme="light"] .row-title p,
+html[data-theme="light"] .row-copy,
+html[data-theme="light"] .row-topics span,
+html[data-theme="light"] .practice-next p,
+html[data-theme="light"] .perspective-quote p,
+html[data-theme="light"] .perspective-cards p,
+html[data-theme="light"] .atlas-badge,
+html[data-theme="light"] .atlas-heading-copy > p,
+html[data-theme="light"] .atlas-heading-copy small,
+html[data-theme="light"] .atlas-footer-note p {
+  color: var(--muted);
+}
+html[data-theme="light"] .section-index-light i,
+html[data-theme="light"] .practice-stack,
+html[data-theme="light"] .practice-row,
+html[data-theme="light"] .perspective-quote,
+html[data-theme="light"] .perspective-cards article,
+html[data-theme="light"] .perspective-cards article + article,
+html[data-theme="light"] .atlas-heading-copy small {
+  border-color: var(--line);
+}
+html[data-theme="light"] .practice-row::before {
+  background: linear-gradient(90deg, rgba(155,111,36,.09), transparent);
+}
+html[data-theme="light"] .row-topics span {
+  border-color: rgba(155,111,36,.35);
+}
+html[data-theme="light"] .practice-next p span,
+html[data-theme="light"] .atlas-privacy strong {
+  color: var(--ink);
+}
+html[data-theme="light"] .perspective-cards article {
+  background: rgba(255,253,248,.62);
+}
+html[data-theme="light"] .atlas-glow {
+  background: radial-gradient(circle, rgba(155,111,36,.14), rgba(155,111,36,0) 68%);
+}
+html[data-theme="light"] .atlas-sidebar {
+  color: var(--ink);
+  background: #dfe8e1;
+  border-right-color: var(--line);
+}
+html[data-theme="light"] .atlas-console-title,
+html[data-theme="light"] .atlas-privacy {
+  border-color: var(--line);
+}
+html[data-theme="light"] .atlas-console-title small,
+html[data-theme="light"] .atlas-question,
+html[data-theme="light"] .atlas-privacy p {
+  color: var(--muted);
+}
+html[data-theme="light"] .atlas-tabs button {
+  color: var(--muted);
+  background: rgba(255,253,247,.54);
+  border-color: var(--line);
+}
+html[data-theme="light"] .atlas-tabs button:hover,
+html[data-theme="light"] .atlas-tabs button[aria-selected="true"] {
+  color: var(--ink);
+  border-color: var(--gold-2);
+  background: rgba(217,187,114,.18);
+}
+html[data-theme="light"] .atlas-footer-note a {
+  color: var(--gold-2);
+  border-bottom-color: rgba(155,111,36,.45);
+}
+
+html[data-theme="light"] .lens-insight {
+  color: var(--ink);
+  background: #e3ebe5;
+  box-shadow: inset 1px 0 var(--line);
+}
+html[data-theme="light"] .lens-insight-top p,
+html[data-theme="light"] .lens-question small,
+html[data-theme="light"] .lens-keep small {
+  color: var(--gold-2);
+}
+html[data-theme="light"] .lens-insight-top span,
+html[data-theme="light"] .lens-insight > p {
+  color: var(--muted);
+}
+html[data-theme="light"] .lens-question,
+html[data-theme="light"] .lens-keep {
+  border-color: var(--line);
+}
+html[data-theme="light"] .lens-question p,
+html[data-theme="light"] .lens-keep p {
+  color: var(--ink);
+}
+html[data-theme="light"] .lens-navigation button {
+  color: var(--gold-2);
+  border-color: rgba(155,111,36,.5);
+}
+html[data-theme="light"] .lens-navigation div {
+  background: var(--line);
+}
+html[data-theme="light"] .lens-navigation div span {
+  background: var(--gold-2);
+}
+
+html[data-theme="light"] .contact {
+  color: var(--ink);
+  background: linear-gradient(145deg, #e1ece4, #f0f3ed 64%);
+}
+html[data-theme="light"] .contact-watermark {
+  color: rgba(17,38,31,.035);
+}
+html[data-theme="light"] .contact-copy > p:last-child,
+html[data-theme="light"] .contact-label,
+html[data-theme="light"] .contact-detail span,
+html[data-theme="light"] .contact-disclaimer {
+  color: var(--muted);
+}
+html[data-theme="light"] .contact-card {
+  color: var(--ink);
+  background: rgba(255,254,250,.86);
+  border-color: var(--line);
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .contact-main,
+html[data-theme="light"] .contact-detail {
+  border-color: var(--line);
+}
+html[data-theme="light"] .contact-main small,
+html[data-theme="light"] .contact-main b {
+  color: var(--gold-2);
+}
+html[data-theme="light"] .contact-main b {
+  border-color: rgba(155,111,36,.48);
+}
+
+html[data-theme="light"] .site-footer {
+  color: var(--white);
+  background: #08241c;
+}
+html[data-theme="light"] .footer-brand .brand {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+html[data-theme="light"] .footer-brand > p,
+html[data-theme="light"] .footer-nav a,
+html[data-theme="light"] .footer-nav button,
+html[data-theme="light"] .professional-id,
+html[data-theme="light"] .footer-bottom {
+  color: rgba(255,255,255,.52);
+}
+html[data-theme="light"] .footer-nav span {
+  color: var(--gold);
+}
+html[data-theme="light"] .footer-nav a:hover,
+html[data-theme="light"] .footer-nav button:hover,
+html[data-theme="light"] .professional-id strong,
+html[data-theme="light"] .developer-credit strong {
+  color: var(--white);
+}
+html[data-theme="light"] .professional-id {
+  border-color: rgba(255,255,255,.14);
+}
+html[data-theme="light"] .professional-id svg {
+  stroke: var(--gold);
+}
+
 html[data-theme="dark"] body { background: radial-gradient(circle at 12% 0, rgba(224,194,122,.08), transparent 32rem), radial-gradient(circle at 92% 38%, rgba(31,101,82,.1), transparent 38rem), var(--paper); }
+html[data-theme="dark"] .practice,
+html[data-theme="dark"] .perspective,
+html[data-theme="dark"] .atlas { background: radial-gradient(circle at 88% 8%, rgba(224,194,122,.055), transparent 30rem), var(--deep); }
+html[data-theme="dark"] .site-footer { background: #03120e; }
 html[data-theme="dark"] .about,
 html[data-theme="dark"] .method,
 html[data-theme="dark"] .professionals { background: linear-gradient(135deg, rgba(255,255,255,.012), transparent 45%); }
@@ -468,9 +650,9 @@ html[data-theme="dark"] .document-sheet {
 }
 html[data-theme="dark"] .dialog-body a { color: var(--gold); }
 
-.about, .method, .lens, .professionals, .ethics,
+.ticker, .about, .practice, .perspective, .method, .atlas, .lens, .professionals, .ethics, .contact, .site-footer,
 .about-panels, .method-steps, .atlas-console, .lens-demo, .professional-card,
-.access-panel, .legal-dialog, .lens-dialog { transition: color .28s ease, background-color .28s ease, border-color .28s ease, box-shadow .28s ease; }
+.atlas-sidebar, .lens-insight, .contact-card, .access-panel, .legal-dialog, .lens-dialog { transition: color .28s ease, background-color .28s ease, border-color .28s ease, box-shadow .28s ease; }
 
 .reveal, .reveal.visible { opacity: 1; transform: none; }
 body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after { animation: none!important; scroll-behavior: auto!important; transition-duration: .01ms!important; }

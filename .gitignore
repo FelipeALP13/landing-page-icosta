@@ -5,3 +5,6 @@ node_modules/
 brand/rendered/
 __pycache__/
 *.pyc
+.sites-publish*/
+.sites-*.patch
+outputs/

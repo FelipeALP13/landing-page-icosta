@@ -18,7 +18,7 @@
     themeButton?.setAttribute('aria-pressed', String(isDark));
     themeButton?.setAttribute('aria-label', isDark ? 'Ativar tema claro' : 'Ativar tema escuro');
     if (themeLabel) themeLabel.textContent = isDark ? 'Tema claro' : 'Tema escuro';
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#081713' : '#f7f3ea');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isDark ? '#071b16' : '#f8f5ee');
     if (persist) {
       try { localStorage.setItem('icosta-theme', selectedTheme); }
       catch { /* Theme remains active for this visit. */ }
